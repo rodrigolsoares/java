@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:tab id="tbPlano" title="Selecione o Plano">
+ 	  	
+ 	  	<p:growl id="mesgPlano" showDetail="true" sticky="true" autoUpdate="false" escape="false" /> 
+		
+		 <table id="form-table">
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="#{msg.selPlano}" /></td>
+				<td>
+					<p:selectOneMenu id="plano" value="#{salaoMB.responsavel.plano.codigo}" style="width: 420px">  
+		                <f:selectItem itemLabel="#{msg.selecione}" itemValue="0" />  
+		                <f:selectItems value="#{salaoMB.mapPlano}" /> 
+		                <p:ajax listener="#{salaoMB.selecionaDadosPlano}"   update="gridDetalhePlano" />      
+		            </p:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="#{msg.diaParaVenc}" /></td>
+				<td>
+					<p:selectOneMenu id="diaVenc" value="#{salaoMB.responsavel.diaVencimento}" style="width: 420px">  
+		                <f:selectItem itemLabel="#{msg.selecione}" itemValue="0" />  
+		                <f:selectItem itemLabel="5" itemValue="5" />  
+		                <f:selectItem itemLabel="10" itemValue="10" />  
+		                <f:selectItem itemLabel="15" itemValue="15" />
+		                <f:selectItem itemLabel="20" itemValue="20" />
+		                <f:selectItem itemLabel="25" itemValue="25" />
+		                <f:selectItem itemLabel="30" itemValue="30" />       
+		            </p:selectOneMenu>
+				</td>
+			</tr>
+			
+		</table>
+		
+		<h:panelGrid id="gridDetalhePlano" >
+			
+			<h:panelGrid rendered="#{salaoMB.responsavel.plano.codigo == 1 }">
+				<ui:include src="../descricaoPlano/basico.xhtml" />
+			</h:panelGrid>
+			
+			<h:panelGrid rendered="#{salaoMB.responsavel.plano.codigo == 2 }">
+				<ui:include src="../descricaoPlano/intermediario.xhtml" />
+			</h:panelGrid>
+			
+			<h:panelGrid rendered="#{salaoMB.responsavel.plano.codigo == 3}">
+				<ui:include src="../descricaoPlano/avancado.xhtml" />
+			</h:panelGrid>
+				
+		</h:panelGrid>
+ 		 	  
+ 		 	
+ 		 	
+ 	</p:tab>
+ 	
+</html>

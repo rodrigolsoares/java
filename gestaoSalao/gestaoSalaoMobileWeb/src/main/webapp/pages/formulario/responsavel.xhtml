@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:tab id="tabResp" title="Responsável">
+			 		 
+		<p:panel header="Personal Details">
+ 			
+ 			<p:messages id="mesgResp" showDetail="true" autoUpdate="false" closable="true" escape="false"/>
+ 			
+			<h:panelGrid columns="5" cellpadding="10"> 
+				
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.nomeResp}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+					<p:inputText  value ="#{salaoMB.responsavel.nome}"   size= "50" />
+				</h:panelGroup>
+			
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.sexo} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel> <br />	
+					<p:selectOneMenu value="#{salaoMB.responsavel.sexo}" >  
+			            <f:selectItem itemLabel="Selecione" itemValue="" />  
+			            <f:selectItem itemLabel="Feminino" itemValue="F" />  
+			            <f:selectItem itemLabel="Masculino" itemValue="M" />   
+			        </p:selectOneMenu>
+			    </h:panelGroup> 
+			    
+			    <h:panelGroup>
+					<p:outputLabel value="#{msg.rg} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+					<p:inputMask  value = "#{salaoMB.responsavel.rg}" mask="99.999.999-9"/>
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<p:outputLabel value="#{msg.cpf} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+					<p:inputMask  value = "#{salaoMB.responsavel.cpf}" mask="999.999.999-99"/>
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<p:outputLabel value="#{msg.dtNasc} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+					<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" value = "#{salaoMB.responsavel.dtNascimento}" />
+				</h:panelGroup>
+				
+				
+	       
+			</h:panelGrid>
+	 		
+	 		<br />
+			<p:separator/>
+			<br />
+			
+			<p:panel id="pnlContato" header="#{msg.contato}" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panelCont">  
+	
+				<h:panelGrid columns="4" cellpadding="5">
+					 
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.tel_residencial} "><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputMask value = "#{salaoMB.responsavel.telResidencial}" mask="(999) 9999-9999"/>
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.tel_celular} "><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputMask value = "#{salaoMB.responsavel.telCelular}" mask="(999) 9999-9999?9" />
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.tel_comercial} "><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputMask value = "#{salaoMB.responsavel.telComercial}" mask="(999) 9999-9999?9" />
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.email} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{salaoMB.responsavel.email}" size="100" />
+					</h:panelGroup>
+					
+					
+				</h:panelGrid>
+				
+			</p:panel>
+		
+	 	</p:panel>	
+	</p:tab>
+</html>

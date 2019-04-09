@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.com.portalsalao</groupId>
+	<artifactId>portalJpa</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+
+	<properties>
+		<spring.version>3.1.1.RELEASE</spring.version>
+	</properties>
+
+	<modules>
+		<module>portalJpaWeb</module>
+	</modules>
+
+	<dependencies>
+		
+		<dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet</artifactId>
+            <version>2.2.7.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-core</artifactId>
+            <version>2.2.7.Final</version>
+        </dependency>
+        
+		
+		<dependency>
+		    <groupId>org.jboss.weld</groupId>
+		    <artifactId>weld-core-impl</artifactId>
+		    <version>2.2.7.Final</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <version>2.2.7.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se</artifactId>
+            <version>2.2.7.Final</version>
+        </dependency>
+        	
+        <dependency>
+		    <groupId>org.jboss</groupId>
+		    <artifactId>jandex</artifactId>
+		    <version>1.2.2.Final</version>
+		</dependency>
+		
+		<dependency> 
+	        <groupId>javax</groupId> 
+	        <artifactId>javaee-api</artifactId> 
+	        <version>7.0</version> 
+		</dependency> 
+		
+
+	</dependencies>
+
+
+
+</project>

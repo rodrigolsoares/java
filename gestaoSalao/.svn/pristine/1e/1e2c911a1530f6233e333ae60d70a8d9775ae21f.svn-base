@@ -1,0 +1,25 @@
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pm="http://primefaces.org/mobile" contentType="text/html">
+	
+	<ui:composition template="../templates/comumInterno.xhtml">
+
+		<ui:define name="pageCenter">
+			
+			<pm:content>
+
+				<ui:include src="formulario/cliente.xhtml"></ui:include>
+	
+				<p:commandButton value="#{msg.btnSalvar}" action="#{clienteMB.gravar}" update="frm" />
+				
+			</pm:content>
+            
+		</ui:define>
+		
+	</ui:composition>
+
+</f:view>

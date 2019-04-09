@@ -1,0 +1,95 @@
+body, a, li, span, label, h1, h2, h3, h4, h5, h6, p {font-family: Arial, Helvetica, sans-serif;}
+
+.ui-menubar {
+	width: auto;
+	background: #1EAEE3;
+	color: #FFFFFF;
+	font-size: 16px;
+}
+
+.ui-menu .ui-menuitem-text {
+	background: #1EAEE3;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ui-menubar .ui-menuitem-link{
+	background: #1EAEE3;color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child{
+	background: #1EAEE3;color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+.ui-button-text-icon-left .ui-button-text {
+	background: #1EAEE3;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ui-menu.ui-menu-dynamic {
+	background: #1EAEE3;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ui-button-icon-only .ui-icon {
+	background: #1EAEE3;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+.ui-menubar {
+  width: auto;
+  background: #1EAEE3;
+  color: #FFF;
+  font-size: 16px;
+  border-radius: 0;
+  border: 0 none;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+  background: #1EAEE3;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 0;
+  border: 1px solid #78D3F4;
+}
+
+/* panel */
+.ui-panel {
+  padding: 0;
+}
+
+.ui-panel .ui-panel-titlebar {
+  background: #EF6822;
+  border: 0 none;
+  border-radius: 0;
+  font-size: 1.7em;
+  padding: 8px;
+}
+
+.ui-panel .ui-panel-content{
+  border: 0 none;
+  background: rgba(0, 0, 0, 0);
+  color: #222;
+}
+
+.ui-widget .ui-button {
+  border: 0 none; border-radius: 0;
+}
+
+.ui-buttonset .ui-button {
+  border: 0 none; border-radius: 0;
+}

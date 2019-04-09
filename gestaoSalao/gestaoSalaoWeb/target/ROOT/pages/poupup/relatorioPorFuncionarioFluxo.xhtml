@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	  
+ 	<p:dialog id="modalFluxoFunc" header="#{msg.consulDetalheServPresFunc}"  resizable="false" widgetVar="modalFluxoFuncPoup" dynamic="true" modal="true" height="90%" width="98%">  
+	   
+	   <h:panelGrid columns="4" cellpadding="5">
+	   
+	   <h:panelGroup > 
+		   <h:panelGroup >
+	   			<p:outputLabel value="Funcionário: " />
+				<h:outputText value="#{fluxoDeCaixaMB.funcionario.nome}" />
+		   </h:panelGroup>
+		   
+		   <p:separator style="width:900px;"/>	 
+		   
+		   <h:panelGroup>
+	   			<p:outputLabel value="Período: " />
+				<h:outputText value="#{fluxoDeCaixaMB.funcionario.dataInicial}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+				<p:outputLabel value=" de: " />
+				<h:outputText value="#{fluxoDeCaixaMB.funcionario.dataFinal}" >
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+		   </h:panelGroup>
+		   
+		   <p:separator style="width:900px;"/>
+		   
+	   </h:panelGroup>
+	   
+	    <p:commandLink  action="#{fluxoDeCaixaMB.imprimeRelatorio}" ajax="false" update=":frm">
+       		 <h:graphicImage value="#{msg.img_impressora}"  style="border:0; width:50px; horizontal-align:right"  alt="Clique aqui para imprimir"/>
+       </p:commandLink>
+	           
+	  
+	   
+	   </h:panelGrid>
+	   
+	   
+	   
+	   <p:dataTable id="dataComissaoDetalhe" var="ag" value="#{fluxoDeCaixaMB.fluxoCaixaByFunc.listaComissao}" rendered="#{fluxoDeCaixaMB.fluxoCaixaByFunc.listaComissao.size() > 0}"
+				             scrollable="true" scrollHeight="350" >
+			     
+	        <p:column style="width:20%" sortBy="#{ag.nomeCliente}" headerText="#{msg.colCliente}">  
+	            <h:outputText value="#{ag.nomeCliente}" />  
+	        </p:column> 
+	        
+	        <p:column style="width:4%" sortBy="#{ag.porcentagem}" headerText="#{msg.colPocentagem}">  
+	            <h:outputText value="#{ag.porcentagem}" />  
+	        </p:column> 
+	        
+	        <p:column style="width:7%" sortBy="#{ag.data}" headerText="#{msg.colData}">  
+	            <h:outputText value="#{ag.data}" >
+	            	<f:convertDateTime pattern="dd/MM/yyyy" />
+	            </h:outputText>  
+	        </p:column>
+	        
+	        <p:column style="width:5%" sortBy="#{ag.hora}" headerText="#{msg.colHora}">  
+	            <h:outputText value="#{ag.hora}" />  
+	        </p:column>
+	        
+	        <p:column sortBy="#{ag.servicos}" headerText="#{msg.colServicos}">  
+	            <h:outputText value="#{ag.servicos}" />  
+	        </p:column>
+	        
+	        <p:column style="width:7%" sortBy="#{ag.valor}" headerText="#{msg.colValor}">  
+	            <h:outputText value="#{ag.valor}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	         <p:column style="width:7%" sortBy="#{ag.desconto}" headerText="#{msg.colDesconto}">  
+	            <h:outputText value="#{ag.desconto}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column>
+	        
+	        <p:column style="width:7%" sortBy="#{ag.valorTotal}" headerText="#{msg.colValortotal}">  
+	            <h:outputText value="#{ag.valorTotal}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	        <p:column style="width:7%" sortBy="#{ag.caixinha}" headerText="#{msg.colCaixinha}">  
+	            <h:outputText value="#{ag.caixinha}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	        <p:column  style="width:7%" sortBy="#{ag.valorComissao}" headerText="#{msg.colVlrComissao}">  
+	            <h:outputText value="#{ag.valorComissao}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	   </p:dataTable>
+	   
+	   <p:separator/>
+	   
+	   <p:outputLabel value="Total serviços:  " />
+	   <h:outputText value="R$ " />
+	   <h:outputText value="#{fluxoDeCaixaMB.fluxoCaixaByFunc.servicoTotal}" >
+			<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	   </h:outputText>
+	   <p:separator />	
+ 						
+	   <p:outputLabel value="Total Comissão:  " />
+	   <h:outputText value="R$ " />
+	   <h:outputText value="#{fluxoDeCaixaMB.fluxoCaixaByFunc.comissaoTotal}" >
+			<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+	   </h:outputText>
+	   <p:separator />	
+		
+	   <p:outputLabel value="Total Caixinha:  " />
+	   <h:outputText value="R$ " />
+	   <h:outputText value="#{fluxoDeCaixaMB.fluxoCaixaByFunc.caixinhaTotal}" >
+		<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+	   </h:outputText>
+	   <p:separator />	
+	   
+	   <p:outputLabel value="Total à Pagar:  " />
+	   <h:outputText value="R$ " />
+	   <h:outputText value="#{fluxoDeCaixaMB.fluxoCaixaByFunc.totalPagaFuncionario}" >
+		<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+	   </h:outputText>
+	   <p:separator />	
+	   
+	   
+	   
+	</p:dialog>			
+	
+				
+</html>

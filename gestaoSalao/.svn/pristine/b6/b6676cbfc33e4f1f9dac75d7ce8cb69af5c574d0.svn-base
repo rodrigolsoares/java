@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:pm="http://primefaces.org/mobile">
+	
+	<ui:composition template="../templates/comumInterno.xhtml">
+
+		<ui:define name="pageCenter">
+				
+				<pm:content>
+	                <pm:field>
+		 				<p:outputLabel value="#{msg.nome}" /><br />	
+						<p:inputText  value ="#{produtoMobileMB.produto.nomeProduto}"  size= "50" />
+					</pm:field>
+							
+					<pm:field> 
+		 				<p:outputLabel value="#{msg.marca}" /><br />	
+						<p:inputText  value ="#{produtoMobileMB.produto.marca}"  size= "50" />
+					</pm:field>
+	
+						
+					<pm:field>
+						<p:outputLabel value="#{msg.status} " /> <br />	
+						<p:selectOneRadio value="#{produtoMobileMB.produto.status}">  
+				            <f:selectItem itemLabel="Selecione" itemValue="0" />  
+				            <f:selectItem itemLabel="Ativo" itemValue="1" />  
+				            <f:selectItem itemLabel="Inativo" itemValue="2" />   
+				        </p:selectOneRadio>
+			        </pm:field>	
+					        
+					<pm:field>
+						<p:outputLabel value="#{msg.emfalta} " /> <br />	
+						<p:selectOneRadio value="#{produtoMobileMB.produto.verifica}">  
+				            <f:selectItem itemLabel="Selecione" itemValue="0" />  
+				            <f:selectItem itemLabel="Sim" itemValue="1" />  
+				            <f:selectItem itemLabel="Não" itemValue="2" />   
+				        </p:selectOneRadio>
+					 </pm:field>
+							
+					<p:commandButton value="#{msg.btnConsulta}" action="#{produtoMobileMB.consultarProduto}" update="frm" /> 
+				
+				</pm:content>
+						
+            
+		</ui:define>
+		
+	</ui:composition>
+
+</html>

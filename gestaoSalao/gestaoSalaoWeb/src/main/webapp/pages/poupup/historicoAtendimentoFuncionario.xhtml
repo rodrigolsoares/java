@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	  
+ 	<p:dialog id="modalHistFunc" header="#{msg.consulHistFunc}" widgetVar="modalHistFuncPoup" dynamic="true" resizable="false" modal="true" height="500" width="98%">  
+	    
+	    <h:panelGroup> 
+			<p:outputLabel value="#{msg.nomeFun}" />
+			<p:outputLabel value ="#{funcionarioMB.funcionarioHist.nome}" />
+		</h:panelGroup>
+		
+		<br /><br />
+		
+		<h:panelGrid columns="3">
+			
+			<h:panelGroup> 
+ 				<p:outputLabel value="#{msg.dtInicial}" /><br />
+ 				<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" value ="#{funcionarioMB.funcionarioHist.dataInicial}" id="dtInicial" />  	 
+			</h:panelGroup>
+			
+			<h:panelGroup> 
+ 				<p:outputLabel value="#{msg.dtFinal}" /><br />
+ 				<p:calendar  locale="pt_BR" pattern="dd/MM/yyyy" value ="#{funcionarioMB.funcionarioHist.dataFinal}" id="dtFinal" />  	 
+			</h:panelGroup>
+			
+			<h:panelGroup>
+				<br />
+				<p:commandButton value="Pesquisar" action="#{funcionarioMB.pesquisaHistorico}" update="modalHistFunc" oncomplete="modalHistFuncPoup.show()" />
+			</h:panelGroup>
+		</h:panelGrid>
+		
+		<br />
+		
+		<p:dataTable id="dataHistFuncCli"  var="ag" value="#{funcionarioMB.listaHistorico}" rendered="#{funcionarioMB.listaHistorico.size() > 0}"
+				             scrollable="true" scrollHeight="350" >
+				     
+	         <p:column style="width:20%" sortBy="#{ag.nomeCliente}" headerText="#{msg.colCliente}">  
+	            <h:outputText value="#{ag.nomeCliente}" />  
+	        </p:column> 
+	        
+	        <p:column style="width:7%" sortBy="#{ag.data}" headerText="#{msg.colData}">  
+	            <h:outputText value="#{ag.data}" >
+	            	<f:convertDateTime pattern="dd/MM/yyyy" />
+	            </h:outputText>  
+	        </p:column>
+	        
+	        <p:column style="width:5%" sortBy="#{ag.hora}" headerText="#{msg.colHora}">  
+	            <h:outputText value="#{ag.hora}" />  
+	        </p:column>
+	        
+	        <p:column sortBy="#{ag.servicos}" headerText="#{msg.colServicos}">  
+	            <h:outputText value="#{ag.servicos}" />  
+	        </p:column>
+	        
+	        <p:column sortBy="#{ag.nomeStatus}" headerText="#{msg.colStatusAtendimento}">  
+	            <h:outputText value="#{ag.nomeStatus}" />  
+	        </p:column>
+	        
+	        <p:column sortBy="#{ag.nomePagamento}" headerText="#{msg.colPagto}">  
+	            <h:outputText value="#{ag.nomePagamento}" />  
+	        </p:column>
+	        
+	        <p:column style="width:7%" sortBy="#{ag.valor}" headerText="#{msg.colValor}">  
+	            <h:outputText value="#{ag.valor}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	         <p:column style="width:7%" sortBy="#{ag.desconto}" headerText="#{msg.colDesconto}">  
+	            <h:outputText value="#{ag.desconto}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column>
+	        
+	        <p:column style="width:7%" sortBy="#{ag.valorTotal}" headerText="#{msg.colValortotal}">  
+	            <h:outputText value="#{ag.valorTotal}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	        
+	        
+
+		</p:dataTable>
+					
+	</p:dialog>			
+	
+				
+</html>

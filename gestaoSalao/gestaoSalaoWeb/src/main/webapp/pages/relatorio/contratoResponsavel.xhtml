@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<br />
+	<h1><p:outputLabel value="Dados Responsável" /></h1>	
+	
+	<h:panelGrid styleClass="tb-dados-plano" columns="4" cellpadding="15px" cellspacing="15px" style="width:100%;"> 
+		
+		<h:panelGroup > 
+			<p:outputLabel value="#{msg.nomeResp}" style="font-size:17px; font-weight:bold;"/>
+			<h:outputText  value ="#{salaoMB.responsavel.nome}" style="font-size:17px;"/>
+		</h:panelGroup>
+	
+		<h:panelGroup> 
+			<p:outputLabel value="#{msg.sexo} " style="font-size:17px; font-weight:bold;"/>	
+			<h:outputText value="Feminnino" style="font-size:17px;" rendered="#{salaoMB.responsavel.sexo == 'F'}"/>  
+			<h:outputText value="Masculino" style="font-size:17px;" rendered="#{salaoMB.responsavel.sexo == 'M'}"/>  
+	    </h:panelGroup> 
+	    
+	    <h:panelGroup rendered="#{salaoMB.responsavel.dtNascimento != null}">
+			<p:outputLabel value="#{msg.dtNasc} " style="font-size:17px; font-weight:bold;"/>	
+			<h:outputText value = "#{salaoMB.responsavel.dtNascimento}"  style="font-size:17px;">
+				<f:convertDateTime pattern="dd/MM/yyyy" />	
+			</h:outputText>
+		</h:panelGroup>	
+	    
+	    <h:panelGroup>
+			<p:outputLabel value="#{msg.rg} " style="font-size:17px; font-weight:bold;"/>
+			<h:outputText  value = "#{salaoMB.responsavel.rg}"  style="font-size:17px;"/>
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.cpf} " style="font-size:17px; font-weight:bold;"/>
+			<h:outputText  value = "#{salaoMB.responsavel.cpf}" style="font-size:17px;"/>
+		</h:panelGroup>
+
+      
+	</h:panelGrid>
+	
+</html>

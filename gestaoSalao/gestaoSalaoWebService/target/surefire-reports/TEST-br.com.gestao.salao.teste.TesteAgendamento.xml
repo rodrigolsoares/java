@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite skipped="0" tests="0" failures="0" errors="0" name="br.com.gestao.salao.teste.TesteAgendamento" time="0">
+  <properties>
+    <property value="IBM Corporation" name="java.vendor"/>
+    <property value="SUN_STANDARD" name="sun.java.launcher"/>
+    <property value="Windows 7" name="os.name"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin\default\jclSC170\vm.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\se-service.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\math.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\jlm.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmorb.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmorbapi.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmcfw.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmpkcs.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmcertpathfw.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmjgssfw.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmjssefw.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmsaslfw.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmjcefw.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmjgssprovider.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmjsseprovider2.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ibmcertpathprovider.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\xmldsigfw.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\xml.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\charsets.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\resources.jar;C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\rt.jar" name="sun.boot.class.path"/>
+    <property value="windows" name="sun.desktop"/>
+    <property value="Sun Microsystems Inc." name="java.vm.specification.vendor"/>
+    <property value="pwa64forks-20120419_01 (SR1+IV19490+IV19661)" name="java.runtime.version"/>
+    <property value="tr_rsoares" name="user.name"/>
+    <property value="j9jit26" name="java.compiler"/>
+    <property value="UTF8" name="os.encoding"/>
+    <property value="true" name="guice.disable.misplaced.annotation.check"/>
+    <property value="" name="com.ibm.util.extralibs.properties"/>
+    <property value="" name="com.ibm.jcl.checkClassPath"/>
+    <property value="pt" name="user.language"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin\default;C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin" name="com.ibm.oti.vm.bootstrap.library.path"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin\default;C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin" name="sun.boot.library.path"/>
+    <property value="C:\Users\tr_rsoares\Documents\apache-maven-3.2.1\bin\..\bin\m2.conf" name="classworlds.conf"/>
+    <property value="1.7.0" name="java.version"/>
+    <property value="America/Sao_Paulo" name="user.timezone"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin" name="com.ibm.system.agent.path"/>
+    <property value="64" name="sun.arch.data.model"/>
+    <property value="2" name="com.ibm.zero.version"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\endorsed" name="java.endorsed.dirs"/>
+    <property value="26" name="com.ibm.oti.vm.library.version"/>
+    <property value="Cp1252" name="sun.jnu.encoding"/>
+    <property value="sun.io" name="file.encoding.pkg"/>
+    <property value="17" name="jxe.current.romimage.version"/>
+    <property value="\" name="file.separator"/>
+    <property value="Java Platform API Specification" name="java.specification.name"/>
+    <property value="51.0" name="java.class.version"/>
+    <property value="info" name="org.slf4j.simpleLogger.defaultLogLevel"/>
+    <property value="BR" name="user.country"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre" name="java.home"/>
+    <property value="JRE 1.7.0 Windows 7 amd64-64 20120322_106209 (JIT enabled, AOT enabled)
+J9VM - R26_Java726_SR1_20120322_1720_B106209
+JIT  - r11_20120322_22976
+GC   - R26_Java726_SR1_20120322_1720_B106209
+J9CL - 20120322_106209" name="java.vm.info"/>
+    <property value="6.1" name="os.version"/>
+    <property value=";" name="path.separator"/>
+    <property value="2.6" name="java.vm.version"/>
+    <property value="" name="user.variant"/>
+    <property value="Cp850" name="console.encoding"/>
+    <property value="sun.awt.windows.WPrinterJob" name="java.awt.printerjob"/>
+    <property value="UnicodeLittle" name="sun.io.unicode.encoding"/>
+    <property value="sun.awt.windows.WToolkit" name="awt.toolkit"/>
+    <property value="true" name="ibm.signalhandling.sigint"/>
+    <property value="C:\Users\tr_rsoares" name="user.home"/>
+    <property value="little" name="com.ibm.cpu.endian"/>
+    <property value="Sun Microsystems Inc." name="java.specification.vendor"/>
+    <property value="true" name="ibm.signalhandling.sigchain"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin\default;C:\servers\WebSphere\AppServer\java_1.7_64\jre\bin;C:\windows\system32;C:\windows;C:\windows\System32;C:\servers\WebSphere\AppServer\java_1.7_64\bin;C:\Equifax\3. Construcao\apache-ant-1.9.0\bin;C:\Users\tr_rsoares\Documents\apache-maven-3.2.1/bin;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;C:\Program Files\TortoiseSVN\bin;C:\servers\WebSphere\AppServer\bin;." name="java.library.path"/>
+    <property value="http://www.ibm.com/" name="java.vendor.url"/>
+    <property value="IBM Corporation" name="java.vm.vendor"/>
+    <property value="JRE 1.7.0 IBM J9 2.6 Windows 7 amd64-64 20120322_106209 (JIT enabled, AOT enabled)
+J9VM - R26_Java726_SR1_20120322_1720_B106209
+JIT  - r11_20120322_22976
+GC   - R26_Java726_SR1_20120322_1720_B106209
+J9CL - 20120322_106209" name="java.fullversion"/>
+    <property value="C:\Users\tr_rsoares\Documents\apache-maven-3.2.1\bin\.." name="maven.home"/>
+    <property value="Java(TM) SE Runtime Environment" name="java.runtime.name"/>
+    <property value="org.codehaus.plexus.classworlds.launcher.Launcher package" name="sun.java.command"/>
+    <property value="C:\Users\tr_rsoares\Documents\apache-maven-3.2.1\bin\..\boot\plexus-classworlds-2.5.1.jar" name="java.class.path"/>
+    <property value="Java Virtual Machine Specification" name="java.vm.specification.name"/>
+    <property value="1.0" name="java.vm.specification.version"/>
+    <property value="little" name="sun.cpu.endian"/>
+    <property value="C:\Users\TR_RSO~1\AppData\Local\Temp\" name="java.io.tmpdir"/>
+    <property value="Cp1252" name="ibm.system.encoding"/>
+    <property value="amd64" name="os.arch"/>
+    <property value="sun.awt.Win32GraphicsEnvironment" name="java.awt.graphicsenv"/>
+    <property value="false" name="ibm.signalhandling.rs"/>
+    <property value="C:\servers\WebSphere\AppServer\java_1.7_64\jre\lib\ext" name="java.ext.dirs"/>
+    <property value="C:\Users\tr_rsoares\Documents\workspace\gestaoSalao" name="user.dir"/>
+    <property value="
+" name="line.separator"/>
+    <property value="IBM J9 VM" name="java.vm.name"/>
+    <property value="false" name="com.ibm.oti.shared.enabled"/>
+    <property value="64" name="com.ibm.vm.bitmode"/>
+    <property value="17" name="jxe.lowest.romimage.version"/>
+    <property value="Cp1252" name="file.encoding"/>
+    <property value="scar" name="com.ibm.oti.configuration"/>
+    <property value="1.7" name="java.specification.version"/>
+    <property value="20120322_106209" name="com.ibm.oti.jcl.build"/>
+  </properties>
+</testsuite>

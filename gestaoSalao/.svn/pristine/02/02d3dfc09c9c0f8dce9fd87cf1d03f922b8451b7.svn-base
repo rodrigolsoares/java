@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<ui:composition template="../templates/comumInterno.xhtml">
+
+		<ui:define name="pageCenter">
+		
+			<p:panel id="panelProduto" header="#{msg.agenda}" >
+					
+					<ui:include src="formulario/agenda.xhtml"></ui:include>
+					<ui:include src="poupup/agendamento.xhtml"></ui:include>
+					<ui:include src="poupup/sugestionNaoEncontraRegistro.xhtml"></ui:include>
+					<ui:include src="poupup/cadastroRapidoClienteAgenda.xhtml"></ui:include>
+					
+			</p:panel>
+
+		</ui:define>
+		
+	</ui:composition>
+</html>

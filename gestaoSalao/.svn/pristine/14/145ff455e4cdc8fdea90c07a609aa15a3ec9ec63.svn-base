@@ -1,0 +1,61 @@
+Basico
+
+Operador
+
+Cadastro Cliente 
+consulta Cliente
+Atendimento
+
+
+Responsavel
+
+Cadastro Cliente
+Consulta Cliente
+Atendimento
+Cadastro Funcionário
+Consulta Funcionario
+Cadastro Serviço
+Consulta Serviço
+Cadastro Despesa
+Consulta Despesa
+Fluxo Caixa
+rateio
+
+--------------------------------------------
+
+
+
+Intermediário
+
+Operador
+
+Cadastro Cliente 
+consulta Cliente
+Atendimento
+
+Responsável
+
+Administrador
+
+
+Vizualizacao
+
+
+---------------------------------------------
+
+Avançado
+
+Operador
+
+Cadastro Cliente 
+consulta Cliente
+Atendimento
+
+Operador Produto
+Cadastro Produto
+Consulta Produto
+
+Responsável
+Administrador
+Vizualizacao
+

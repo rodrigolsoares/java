@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+		
+		<h:panelGrid columns="1" cellpadding="5"> 
+			
+			<h:panelGroup> 
+ 				<p:outputLabel value="#{msg.conta}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+				<p:inputText  value ="#{despesaMB.despesa.nomeConta}"  size= "50" />
+			</h:panelGroup>
+		
+	    </h:panelGrid>
+		
+		<h:panelGrid columns="4" cellpadding="5"> 
+			
+			<h:panelGroup> 
+ 				<p:outputLabel value="#{msg.dtVenc}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+ 				<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" value ="#{despesaMB.despesa.dataVencimento}" id="popupVenc" />  	 
+			</h:panelGroup>
+			
+			<h:panelGroup> 
+ 				<p:outputLabel value="#{msg.dtPagto}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+ 				<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" value ="#{despesaMB.despesa.dataPagamento}" id="popupPagto" />
+			</h:panelGroup>
+			
+			<h:panelGroup> 
+ 				<p:outputLabel value="#{msg.valor}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+ 				<pe:inputNumber id="valor" value="#{despesaMB.despesa.valorConta}" symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  />	
+				
+			</h:panelGroup>
+			
+			<h:panelGroup> 
+				<p:outputLabel value="#{msg.status} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+				<p:selectOneMenu value="#{despesaMB.despesa.status}">  
+		            <f:selectItem itemLabel="Selecione" itemValue="" />  
+		            <f:selectItem itemLabel="Ativo" itemValue="1" />  
+		            <f:selectItem itemLabel="Inativo" itemValue="2" />   
+		        </p:selectOneMenu>
+	        </h:panelGroup> 	
+			
+	    </h:panelGrid>
+				
+</html>

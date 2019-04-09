@@ -1,0 +1,18 @@
+#topo {
+	padding:0 10px;
+	height:30px;
+	
+}
+
+#menu {
+	padding:0 0 0 130px;
+	height:70px;
+	
+}
+
+#logo {
+	padding:0 0 0 0;
+	width:100px;
+	height:100px;
+}
+

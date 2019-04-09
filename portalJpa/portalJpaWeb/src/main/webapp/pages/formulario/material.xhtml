@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+					
+			<h:panelGrid columns="1" cellpadding="5"> 
+			
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.nome}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+					<p:inputText  value ="#{materialMB.materialVO.nome}" id="txtNome" size= "50" />
+				</h:panelGroup>
+	
+	    	</h:panelGrid>
+	    	
+		    
+		    <h:panelGrid columns="1" cellpadding="5"> 
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.descricao}" /><br />	
+					<p:inputTextarea  id="txtDescricao"  value ="#{materialMB.materialVO.descricao}"  rows="5" cols="100"></p:inputTextarea>  
+				</h:panelGroup>
+				
+			</h:panelGrid>
+			
+			<h:panelGrid columns="3" cellpadding="5">
+				
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.unidadeMedida} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel> <br />	
+					<p:selectOneMenu id="cboStatus"  value="#{materialMB.materialVO.unidadeMedida}">  
+			            <f:selectItem itemLabel="Selecione" itemValue="0" />  
+			            <f:selectItem itemLabel="KG" itemValue="1" />  
+			            <f:selectItem itemLabel="UNIDADE" itemValue="2" />   
+			        </p:selectOneMenu>
+		        </h:panelGroup> 
+		        
+		        <p:spacer width="10" />
+		        
+		        <h:panelGroup> 
+	 				<p:outputLabel value="#{msg.quantidadeMinimaEstoqueParaVenda}" /><br />
+					<pe:inputNumber id="txtQtdeMinimaEstoque" value ="#{materialMB.materialVO.quantidadeMinimaParaVenda}"  
+									decimalPlaces="3" decimalSeparator=","  
+									thousandSeparator = "."   />
+				</h:panelGroup>
+			
+			</h:panelGrid> 
+			
+			
+			<h:panelGrid columns="3" cellpadding="5">
+				
+				 <h:panelGroup> 
+	 				<p:outputLabel value="#{msg.valorCompra}" /><br />
+					<pe:inputNumber id="txtValorCompra" value ="#{materialMB.materialVO.valorCompra}"  
+									decimalPlaces="2" decimalSeparator=","  
+									thousandSeparator = "."  />
+				</h:panelGroup>
+		        
+		        <p:spacer width="10" />
+		        
+		        <h:panelGroup> 
+	 				<p:outputLabel value="#{msg.valorVenda}" /><br />
+					<pe:inputNumber id="txtValorVenda" value ="#{materialMB.materialVO.valorVenda}"  
+									decimalPlaces="2" decimalSeparator=","  
+									thousandSeparator = "."  />
+				</h:panelGroup>
+			
+			</h:panelGrid> 
+			
+
+</html>

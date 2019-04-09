@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:tab id="tbUsuario" title="Usuário do Sistema">
+			
+			 <p:growl id="mesgUser" showDetail="true" sticky="true" autoUpdate="false" escape="false" /> 
+ 		 	 
+ 		 	 <br /> 
+ 		 	 <p:dataTable var="usuario" value="#{salaoMB.salao.listaUsuarios}" id="usuList" editMode="cell" editable="true">  
+  
+		        <f:facet name="header">  
+		            Criação de senha para os usuários  
+		        </f:facet>  
+		  
+		        <p:ajax event="cellEdit" listener="#{salaoMB.onEditUsuer}" />  
+		  
+		        <p:column headerText="Nome do Usuário" style="width:30%">  
+		            <p:cellEditor>  
+		                <f:facet name="output">  
+		                    <h:outputText value="#{usuario.nome}" />  
+		                </f:facet>  
+		                <f:facet name="input">  
+		                    <h:outputText value="#{usuario.nome}" />   
+		                </f:facet>  
+		            </p:cellEditor>  
+		        </p:column>  
+		  
+		        <p:column headerText="Login" style="width:20%">  
+		            <p:cellEditor>  
+		                <f:facet name="output">  
+		                    <h:outputText value="#{usuario.login}" />  
+		                </f:facet>
+		                <f:facet name="input">  
+		                    <h:outputText value="#{usuario.login}" />    
+		                </f:facet>     
+		            </p:cellEditor>  
+		        </p:column>  
+		  
+		        <p:column headerText="Senha" style="width:24%">  
+		            <p:cellEditor>  
+		                <f:facet name="output">  
+		                    <h:outputText value="*****"  />  
+		                </f:facet>  
+		                 <f:facet name="input">  
+		                    <p:password value="#{usuario.senha}" style="width:100%"/>  
+		                </f:facet>  
+		            </p:cellEditor>  
+		        </p:column>  
+		        
+		        <p:column headerText="Confirmar Senha" style="width:24%">  
+		            <p:cellEditor>  
+		                <f:facet name="output">  
+		                    <h:outputText value="****" />  
+		                </f:facet>  
+		                 <f:facet name="input">  
+		                    <p:password value="#{usuario.confirmaSenha}" style="width:100%"/>  
+		                </f:facet>  
+		            </p:cellEditor>  
+		        </p:column>  
+		  				  
+		    </p:dataTable>  
+			
+			<br />
+ 		 	
+ 	</p:tab>
+ 	
+</html>

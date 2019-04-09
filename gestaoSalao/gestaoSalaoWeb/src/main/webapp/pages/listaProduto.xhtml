@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+ 	<ui:composition template="../templates/comumInterno.xhtml">
+
+		<ui:define name="pageCenter">
+			
+			<ui:include src="atualiza/altProduto.xhtml"></ui:include>
+			
+			<h:panelGrid id= "consulProduto" columns="1" rendered="#{!produtoMB.habilitaAlterar}" width="100%">
+	
+	 			<p:panel id="panelProduto" header="#{msg.consulProduto}" >
+	 				
+	 				<h:panelGrid columns="2" cellpadding="5"> 
+	 				
+	 					<h:panelGroup> 
+			 				<p:outputLabel value="#{msg.nome}" /><br />	
+							<p:inputText  value ="#{produtoMB.produto.nomeProduto}"  size= "50" />
+						</h:panelGroup>
+						
+						<h:panelGroup> 
+			 				<p:outputLabel value="#{msg.marca}" /><br />	
+							<p:inputText  value ="#{produtoMB.produto.marca}"  size= "50" />
+						</h:panelGroup>
+					
+					</h:panelGrid>
+					
+					<h:panelGrid columns="3" cellpadding="5"> 
+						
+						<h:panelGroup> 
+							<p:outputLabel value="#{msg.status} " /> <br />	
+							<p:selectOneMenu value="#{produtoMB.produto.status}">  
+					            <f:selectItem itemLabel="Selecione" itemValue="0" />  
+					            <f:selectItem itemLabel="Ativo" itemValue="1" />  
+					            <f:selectItem itemLabel="Inativo" itemValue="2" />   
+					        </p:selectOneMenu>
+				        </h:panelGroup> 	
+				        
+				        <h:panelGroup> 
+							<p:outputLabel value="#{msg.emfalta} " /> <br />	
+							<p:selectOneMenu value="#{produtoMB.produto.verifica}">  
+					            <f:selectItem itemLabel="Selecione" itemValue="0" />  
+					            <f:selectItem itemLabel="Sim" itemValue="1" />  
+					            <f:selectItem itemLabel="Não" itemValue="2" />   
+					        </p:selectOneMenu>
+				        </h:panelGroup>
+						
+						<p:commandButton value="#{msg.btnConsulta}" action="#{produtoMB.consultarProduto}" update=":frm" /> 
+						
+				    </h:panelGrid>
+				    
+				    <p:spacer height="10" />
+				    
+					<p:dataTable id="dataProd" paginatorPosition="bottom" var="prod" value="#{produtoMB.listaProduto}" 
+					             rendered="#{produtoMB.listaProduto.size() > 0}" scrollable="true" scrollHeight="250" >
+					     
+				        <p:column sortBy="#{prod.nomeProduto}" headerText="#{msg.colNomeProd}" footerText="" >  
+				            <h:outputText value="#{prod.nomeProduto}" />  
+				        </p:column> 
+				        
+				        <p:column sortBy="#{prod.marca}" headerText="#{msg.colMarca}" footerText="">  	
+				            <h:outputText value="#{prod.marca}" />  
+				        </p:column> 
+				        
+				        <p:column sortBy="#{prod.qteEstoque}" headerText="#{msg.colQtdeEstoque}" style="width:10%" footerText="" >  
+				            <h:outputText value="#{prod.qteEstoque}" />  
+				        </p:column>
+				        
+				        <p:column sortBy="#{prod.valorPago}" headerText="#{msg.colValorPago}" style="width:10%" footerText="">  
+				            <h:outputText value="R$ " />
+				            <h:outputText value="#{prod.valorPago}" >
+				            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+				            </h:outputText>  
+				        </p:column>
+				        
+				        <p:column sortBy="#{prod.valorTotal}" headerText="#{msg.colValortotal}" style="width:10%" footerText="">  
+				            <h:outputText value="R$ " />
+				            <h:outputText value="#{prod.valorTotal}" >
+				            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+				            </h:outputText>  
+				        </p:column>
+				        
+				        <p:column headerText="#{msg.colStatus}" style="width:6%" footerText="">  
+				           <h:graphicImage value="#{msg.img_ativo}" rendered="#{prod.status == 1}" style="border:0" />
+				           <h:graphicImage value="#{msg.img_inativo}" rendered="#{prod.status == 2}" style="border:0" />
+				        </p:column>
+				        
+				        <p:column style="width:4%" footerText="">  
+				           <p:commandLink  action="#{produtoMB.editar}" update=":frm" >
+				           		<h:graphicImage value="#{msg.img_editar}"  style="border:0" />
+				           		<f:setPropertyActionListener target="#{produtoMB.produto}" value="#{prod}"/>
+				           </p:commandLink>
+				        </p:column>
+				        
+	
+					</p:dataTable>
+
+			</p:panel> 
+			
+			</h:panelGrid>
+
+		</ui:define>
+	</ui:composition>
+</html>

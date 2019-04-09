@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+		
+		<p:dataTable id="dataExtratocomissao" var="ag" value="#{fluxoDeCaixaMB.fluxoCaixa.listaComissao}" rendered="#{fluxoDeCaixaMB.fluxoCaixa.listaComissao.size() > 0}"
+				             scrollable="true" scrollHeight="250" >
+			     
+	        <p:column sortBy="#{ag.nomeFuncionario}" headerText="#{msg.colFunc}">  
+	            <h:outputText value="#{ag.nomeFuncionario}" />  
+	        </p:column> 
+	        
+	        <p:column style="width:4%" sortBy="#{ag.porcentagem}" headerText="#{msg.colPocentagem}">  
+	            <h:outputText value="#{ag.porcentagem}" />  
+	        </p:column> 
+	        
+	        <p:column sortBy="#{ag.valor}" headerText="#{msg.colValor}">  
+	            <h:outputText value="#{ag.valor}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	         <p:column sortBy="#{ag.desconto}" headerText="#{msg.colDesconto}">  
+	            <h:outputText value="#{ag.desconto}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column>
+	        
+	        <p:column sortBy="#{ag.valorTotal}" headerText="#{msg.colValortotal}">  
+	            <h:outputText value="#{ag.valorTotal}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	        <p:column sortBy="#{ag.caixinha}" headerText="#{msg.colCaixinha}">  
+	            <h:outputText value="#{ag.caixinha}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	        <p:column sortBy="#{ag.valorComissao}" headerText="#{msg.colVlrComissao}">  
+	            <h:outputText value="#{ag.valorComissao}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	        
+	        <p:column headerText="#{msg.colDetalhe}" style="width:10%" footerText="">  
+	           <p:commandLink  action="#{fluxoDeCaixaMB.detalheComissaoFuncionario}"  oncomplete="modalFluxoFuncPoup.show()" update=":frm">
+	           		<h:graphicImage value="#{msg.img_historico}"  style="border:0" />
+	           		<f:setPropertyActionListener target="#{fluxoDeCaixaMB.funcionario.codigo}" value="#{ag.codigoFuncionario}"/>
+	           		<f:setPropertyActionListener target="#{fluxoDeCaixaMB.funcionario.nome}" value="#{ag.nomeFuncionario}"/>
+	           </p:commandLink>
+	        </p:column>
+	        
+
+		</p:dataTable>
+									
+</html>

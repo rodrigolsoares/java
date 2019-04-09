@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+					
+			<h:panelGrid columns="1" cellpadding="5"> 
+			
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.nome}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+					<p:inputText  value ="#{produtoMB.produto.nomeProduto}" id="txtProduto" size= "50" />
+				</h:panelGroup>
+	
+	    	</h:panelGrid>
+		    
+		    <h:panelGrid columns="1" cellpadding="5"> 
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.marca}"><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+					<p:inputText  value ="#{produtoMB.produto.marca}"  id="txtMarca" size= "50" />
+				</h:panelGroup>
+			
+		    </h:panelGrid>
+		    
+		    <h:panelGrid columns="1" cellpadding="5"> 
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.descricao}" /><br />	
+					<p:inputTextarea  id="txtDescricao"  value ="#{produtoMB.produto.descricao}"  rows="5" cols="100"></p:inputTextarea>  
+				</h:panelGroup>
+			
+		    </h:panelGrid>
+		    
+		    <h:panelGrid columns="3" cellpadding="5" > 
+				
+					<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.qtdeEstoque}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+	 				<h:panelGrid columns="1" style="margin-bottom:10px">	
+						<p:inputText id="qtdeEstoque" value ="#{produtoMB.produto.qteEstoque}" >
+							<p:ajax event="blur" update="txtVlrTotal" listener="#{produtoMB.calculaTotal}" />
+						</p:inputText>
+						<p:slider for="qtdeEstoque" maxValue="1000"/>
+					</h:panelGrid> 
+				</h:panelGroup>
+				
+				<p:spacer width="10" />
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.qtdeMinima}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+	 				<h:panelGrid columns="1" style="margin-bottom:10px">	
+						<p:inputText id="qtdeMinima" value ="#{produtoMB.produto.qteMinimaEstoque}" />
+						<p:slider for="qtdeMinima" maxValue="1000" /> 
+					</h:panelGrid>
+				</h:panelGroup>
+			
+		    </h:panelGrid>
+		    
+		     <h:panelGrid columns="3" cellpadding="5" > 
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.vlrPago}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+	 				<pe:inputNumber id="valor" value="#{produtoMB.produto.valorPago}" symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  >
+	 					<p:ajax event="blur" update="txtVlrTotal" listener="#{produtoMB.calculaTotal}" />
+	 				</pe:inputNumber>
+	 				
+				</h:panelGroup>
+				
+				<p:spacer width="10" />
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.vlrTotal}" /><br />
+					<pe:inputNumber id="txtVlrTotal" value ="#{produtoMB.produto.valorTotal}"  symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  readonly="true" />
+				</h:panelGroup>
+			
+		    </h:panelGrid>
+			
+			<h:panelGrid columns="1" cellpadding="5"> 
+				
+				
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.status} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel> <br />	
+					<p:selectOneMenu id="cboStatus"  value="#{produtoMB.produto.status}">  
+			            <f:selectItem itemLabel="Selecione" itemValue="0" />  
+			            <f:selectItem itemLabel="Ativo" itemValue="1" />  
+			            <f:selectItem itemLabel="Inativo" itemValue="2" />   
+			        </p:selectOneMenu>
+		        </h:panelGroup> 	
+				
+		    </h:panelGrid>
+				
+
+</html>

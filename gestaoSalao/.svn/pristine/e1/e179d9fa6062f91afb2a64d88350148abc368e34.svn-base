@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h1><p:outputLabel value="Dados do Salão" /></h1>
+	<p:separator/><br />
+	
+	<h:panelGrid columns="5" cellpadding="10"> 
+				
+		<h:panelGroup> 
+			<p:outputLabel value="#{msg.nomeFanSalao}" /><br />	
+			<h:outputText value ="#{salaoMB.salao.nomeFantasia}" />
+		</h:panelGroup>
+		
+		<h:panelGroup> 
+			<p:outputLabel value="#{msg.razaoSocial}" ></p:outputLabel><br />	
+			<h:outputText  value ="#{salaoMB.salao.razaoSocial}"  />
+		</h:panelGroup>
+		
+	    <h:panelGroup>
+			<p:outputLabel value="#{msg.cnpj} " ></p:outputLabel><br />	
+			<h:outputText  value = "#{salaoMB.salao.cnpj}" />
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.inscEstadual} " ></p:outputLabel><br />	
+			<h:outputText  value = "#{salaoMB.salao.inscEstadual}" />
+		</h:panelGroup>
+		
+	</h:panelGrid>
+		
+	<br />
+	<h3><p:outputLabel value="Endereço Salão" /></h3>
+	<p:separator/>
+	<br />
+
+	<h:panelGrid columns="3" cellpadding="5">
+		 
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.logradouro} " /><br />	
+			<h:outputText value = "#{salaoMB.salao.logradouro}"  size="50"/>
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.numero} " /><br />	
+			<h:outputText value = "#{salaoMB.salao.numero}" />
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.complemento} " ></p:outputLabel><br />
+			<h:outputText value = "#{salaoMB.salao.complemento}" />
+		</h:panelGroup>
+		
+	</h:panelGrid>
+	
+	<h:panelGrid columns="3" cellpadding="5">
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.bairro} " /><br />	
+			<h:outputText value = "#{salaoMB.salao.bairro}" size="40"/>
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.cidade} " /><br />
+			<h:outputText value = "#{salaoMB.salao.cidade}" size="40"/>
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.estado} " /><br />
+			<h:outputText value="#{salaoMB.salao.estado}" />  
+	    </h:panelGroup>
+		
+	</h:panelGrid>
+
+	
+	<br />
+	<h3><p:outputLabel value="Contato do Salão" /></h3>
+	<p:separator/>
+	<br />
+
+	<h:panelGrid columns="3" cellpadding="5">
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.tel_1} "/><br />	
+			<h:outputText value = "#{salaoMB.salao.tel1}" />
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.tel_2} "></p:outputLabel><br />	
+			<h:outputText value = "#{salaoMB.salao.tel2}" />
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.email} " /><br />	
+			<h:outputText value = "#{salaoMB.salao.email}" />
+		</h:panelGroup>
+		
+		
+	</h:panelGrid>
+		
+	 	  
+
+
+</html>

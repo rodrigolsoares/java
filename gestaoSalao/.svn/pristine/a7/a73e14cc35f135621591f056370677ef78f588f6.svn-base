@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		
+		<link rel="stylesheet" type="text/css" href="../css/default.css" />
+		<script type="text/javascript" src="../js/calendarioLocalePt.js" />
+		
+	</h:head>
+ 	
+ 	<h:body>
+ 	
+		<h:form id="frm">
+			
+			<div id="topo">
+				<img id="logo" src="../images/logo_portal.png" />
+			</div>
+			
+			<div id="menu">
+				<p:breadCrumb > 
+					<p:menuitem  value="Home" url="portalInicio.jsf" />   
+				    <p:menuitem  value="Cadastrar Salão" url="cadSalao.jsf"  /> 
+				    <p:menuitem  value="Planos" url="#"  />  
+	    			<p:menuitem  value="Login Usuário Salão" url="login.jsf" /> 
+	    			 <p:menuitem value="Suporte" url="#" />
+	    			 <p:menuitem  value="Contato" url="#"  /> 
+				</p:breadCrumb>
+			</div>
+				
+			<p:separator/>
+			
+			<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/> 
+			<p:dialog modal="true" widgetVar="statusDialog" header="Processando" draggable="false" closable="false">  
+	 			<p:graphicImage value="/images/ajaxloadingbar.gif" />  
+			</p:dialog> 
+			
+			
+			<ui:insert name="pageCenter"></ui:insert>
+
+			
+		</h:form>
+					
+ 	</h:body>
+ 	
+
+</html>

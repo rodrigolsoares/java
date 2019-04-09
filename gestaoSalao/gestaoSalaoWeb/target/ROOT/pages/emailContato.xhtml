@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="../templates/comumInterno.xhtml">
+
+		<ui:define name="pageCenter">
+			
+			
+			<p:panel id="panelEmail" header="#{msg.enviEmailContato}" >
+				 
+				 <h:panelGrid columns="1" cellpadding="5"> 
+					
+					<h:panelGroup> 
+					 	<p:outputLabel value="#{msg.nome} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{emailMB.emailVo.nome}" size="80"/>
+					 </h:panelGroup>
+					 	
+					 <h:panelGroup> 
+					 	<p:outputLabel value="#{msg.email} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{emailMB.emailVo.distinatario}" size="80"/>
+					 </h:panelGroup>
+					 
+					 <h:panelGroup> 
+					 	<p:outputLabel value="#{msg.cabecalho} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{emailMB.emailVo.cabecalho}" size="80"/>
+					 </h:panelGroup>
+					 
+					 <h:panelGroup>
+					 	 <p:outputLabel value="#{msg.motivo} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						 <p:selectOneMenu value="#{emailMB.emailVo.motivo}" >  
+				            <f:selectItem itemLabel="Selecione" itemValue="" />
+				            <f:selectItem itemLabel="Sugestão" itemValue="Sugestão" />
+				            <f:selectItem itemLabel="Erro" itemValue="Erro" />
+				            <f:selectItem itemLabel="Cobrança" itemValue="Cobrança" />
+				            <f:selectItem itemLabel="Suporte" itemValue="Suporte" />  
+				         </p:selectOneMenu>
+			         </h:panelGroup>	
+					 
+					 <h:panelGroup> 
+					 	<p:outputLabel value="#{msg.mensagem} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	 
+					 	<p:editor id="editor" value="#{emailMB.emailVo.mensagem}" width="800" />
+					 </h:panelGroup> 
+				 
+				 </h:panelGrid>
+				
+			</p:panel>
+			
+			<br />
+		
+			<p:commandButton value="#{msg.btnEnviarEmail}" action="#{emailMB.enviar}" update="frm" />
+				
+		</ui:define>
+		
+	</ui:composition>
+</html>

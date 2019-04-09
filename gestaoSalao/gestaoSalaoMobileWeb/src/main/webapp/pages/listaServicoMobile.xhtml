@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:pm="http://primefaces.org/mobile">
+	
+	<ui:composition template="../templates/comumInterno.xhtml">
+
+		<ui:define name="pageCenter">
+				
+
+			
+			
+				<ui:include src="atualiza/altServico.xhtml"></ui:include>
+				
+				<pm:content id= "altconsulta" rendered="#{!servicoMobileMB.habilitaAlterar}">
+				
+	                <p:dataList id="dataServico" var="serv" value="#{servicoMobileMB.listaServico}" >
+					     
+					    <f:facet name="header">
+					       <h:outputText value="#{msg.colServicos}" />
+					    </f:facet> 	
+					    
+					    <p:commandLink action="#{servicoMobileMB.editar}" update="@form" > 
+					    	<f:setPropertyActionListener target="#{servicoMobileMB.servico}" value="#{serv}"/>
+					    	
+					       	<p><h:outputText value="#{msg.nome}" /> <h:outputText value="#{serv.nome}" /></p>
+					        <p><h:outputText value="#{msg.sigla}" /><h:outputText value="#{serv.sigla}" /></p>
+					        <p>
+					        	<h:outputText value="#{msg.valor}" />
+					        	<h:outputText value="R$ " />
+					            <h:outputText value="#{serv.valor}" >
+					            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+					            </h:outputText>  
+					        </p>
+					        <p>
+					        	<h:outputText value="#{msg.status}" /><p:spacer height="10"></p:spacer>
+					        	<h:graphicImage value="#{msg.img_ativo}" rendered="#{serv.status == 1}" style="border:0" />
+				           		<h:graphicImage value="#{msg.img_inativo}" rendered="#{serv.status == 2}" style="border:0" />
+					        </p>
+					    </p:commandLink>
+					    
+				      	 <f:facet name="footer">
+					       <h:outputText value="#{msg.colServicos}" />
+					    </f:facet> 	
+					    
+					</p:dataList>
+				</pm:content>
+				
+
+		</ui:define>
+		
+	</ui:composition>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h1><p:outputLabel value="Dados do Salão" /></h1>
+	
+	<h:panelGrid styleClass="tb-dados-plano" columns="5" cellpadding="15px" cellspacing="15px" style="width:100%;"> 
+				
+		<h:panelGroup> 
+			<p:outputLabel value="#{msg.nomeFanSalao}" style="font-size:17px; font-weight:bold;" />	
+			<h:outputText value ="#{salaoMB.salao.nomeFantasia}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup> 
+			<p:outputLabel value="#{msg.razaoSocial}" style="font-size:17px; font-weight:bold;" />
+			<h:outputText  value ="#{salaoMB.salao.razaoSocial}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+	    <h:panelGroup>
+			<p:outputLabel value="#{msg.cnpj} " style="font-size:17px; font-weight:bold;" />	
+			<h:outputText  value = "#{salaoMB.salao.cnpj}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{salaoMB.salao.inscEstadual != null}">
+			<p:outputLabel value="#{msg.inscEstadual} " style="font-size:17px; font-weight:bold;" />	
+			<h:outputText  value = "#{salaoMB.salao.inscEstadual}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+	</h:panelGrid>
+		
+	<br />
+	<h1><p:outputLabel value="Endereço Salão" /></h1>
+
+	<h:panelGrid styleClass="tb-dados-plano" columns="3" cellpadding="15px" cellspacing="15px" style="width:100%;" >
+		 
+		<h:panelGroup rendered="#{salaoMB.salao.logradouro != null}">
+			<p:outputLabel value="#{msg.logradouro} " style="font-size:17px; font-weight:bold;" />
+			<h:outputText value = "#{salaoMB.salao.logradouro}"  style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{salaoMB.salao.numero != null}">
+			<p:outputLabel value="#{msg.numero} " style="font-size:17px; font-weight:bold;" />
+			<h:outputText value = "#{salaoMB.salao.numero}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{salaoMB.salao.complemento != null}">
+			<p:outputLabel value="#{msg.complemento} " style="font-size:17px; font-weight:bold;" />
+			<h:outputText value = "#{salaoMB.salao.complemento}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+	</h:panelGrid>
+	
+	<h:panelGrid styleClass="tb-dados-plano" columns="3" cellpadding="15px" cellspacing="15px" style="width:100%; border-top: none 0">
+		
+		<h:panelGroup rendered="#{salaoMB.salao.bairro != null}">
+			<p:outputLabel value="#{msg.bairro} " style="font-size:17px; font-weight:bold;" />	
+			<h:outputText value = "#{salaoMB.salao.bairro}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{salaoMB.salao.cidade != null}">
+			<p:outputLabel value="#{msg.cidade} " style="font-size:17px; font-weight:bold;" />
+			<h:outputText value = "#{salaoMB.salao.cidade}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{salaoMB.salao.estado != null}">
+			<p:outputLabel value="#{msg.estado} " style="font-size:17px; font-weight:bold;" />
+			<h:outputText value="#{salaoMB.salao.estado}" style="font-size:17px;" />  
+	    </h:panelGroup>
+		
+	</h:panelGrid>
+
+	
+	<br />
+	<h1><p:outputLabel value="Contato do Salão" /></h1>
+
+	<h:panelGrid styleClass="tb-dados-plano" columns="3" cellpadding="15px" cellspacing="15px" style="width:100%;">
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.tel_1} " style="font-size:17px; font-weight:bold;" />	
+			<h:outputText value = "#{salaoMB.salao.tel1}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{salaoMB.salao.tel2 != null}">
+			<p:outputLabel value="#{msg.tel_2} " style="font-size:17px; font-weight:bold;" />
+			<h:outputText value = "#{salaoMB.salao.tel2}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<p:outputLabel value="#{msg.email} " style="font-size:17px; font-weight:bold;" />
+			<h:outputText value = "#{salaoMB.salao.email}" style="font-size:17px;" />
+		</h:panelGroup>
+		
+		
+	</h:panelGrid>
+		
+	 	  
+
+
+</html>

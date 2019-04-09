@@ -1,0 +1,25 @@
+Basico
+
+Responsavel
+Operador
+
+
+Intermediário
+
+Responsável
+Administrador
+Operador
+Vizualizacao
+
+Avançado
+
+Responsável
+Administrador
+Operador
+Operador Produto
+Vizualizacao
+
+
+Os usuários serão criados no momento da criação do plano, 
+a politica da criação dos usuários será as 4 primeiras letras do salão concatenadas
+pelas 4 primeiras letras do perfil.

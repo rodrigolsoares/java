@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	 
+	
+	<p:dialog id="modalAlterarSenha" header="Alterar senha do usuário"  widgetVar="modlAltSenhaPoup" 
+		dynamic="true" modal="true" resizable="false" height="250" width="300">  
+
+			<h:panelGrid columns="1" cellpadding="5"> 
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.login}" /><br />	
+					<p:inputText  value ="#{usuarioMB.usuario.login}" readonly="true"/>
+				</h:panelGroup>
+			
+		    </h:panelGrid>
+		     
+		    <h:panelGrid columns="1" cellpadding="5"> 
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.novaSenha}" /><br />	
+					<p:password password="true" value ="#{usuarioMB.usuario.senha}"  />
+				</h:panelGroup>
+			
+		    </h:panelGrid>
+		    
+		    <h:panelGrid columns="1" cellpadding="5"> 
+				
+				<h:panelGroup> 
+	 				<p:outputLabel value="#{msg.confNovaSenha}" /><br />	
+					<p:password value ="#{usuarioMB.usuario.confirmaSenha}"  />
+				</h:panelGroup>
+			
+		    </h:panelGrid>
+		    
+			<h:panelGrid columns="1" cellpadding="5"> 
+				<p:commandButton value="#{msg.alterar}" action="#{usuarioMB.alterarSenha}" update="frm" />
+			</h:panelGrid> 
+				
+	</p:dialog>    
+	   
+		
+</html>

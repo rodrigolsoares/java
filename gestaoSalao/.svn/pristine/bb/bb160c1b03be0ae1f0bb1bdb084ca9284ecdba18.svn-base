@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="../templates/comumExterno.xhtml">
+
+		<ui:define name="pageCenter">
+  			
+  			<h:form id="frm">
+  			
+				<p:panel header="#{msg.cabecacolhologin}" id="panelLogin"  >
+				
+					<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/> 
+	 				<p:messages id="messages" showDetail="true" autoUpdate="false" closable="true" /> 
+	 				
+	 				<p:dialog modal="true" widgetVar="statusDialog" header="Processando" draggable="false" closable="false">  
+	    				<p:graphicImage value="/images/ajaxloadingbar.gif" />  
+					</p:dialog> 
+	 				
+	 				<h:panelGrid columns="1" cellpadding="5"> 
+	 				
+	 					<h:panelGroup> 
+			 				<p:outputLabel value="#{msg.login}" /><br />	
+							<p:inputText  value ="#{usuarioMB.usuario.login}"  />
+						</h:panelGroup>
+					
+				    </h:panelGrid>
+				     
+				    <h:panelGrid columns="1" cellpadding="5"> 
+	 				
+	 					<h:panelGroup> 
+			 				<p:outputLabel value="#{msg.senha}" /><br />	
+							<p:password value ="#{usuarioMB.usuario.senha}"  />
+						</h:panelGroup>
+					
+				    </h:panelGrid>
+				    
+					<h:panelGrid columns="2" cellpadding="5"> 
+						<p:commandButton value="#{msg.ok}" action="#{usuarioMB.login}" update="frm" />
+						<p:commandButton value="#{msg.cancel}" action="#{servico.gravar}" update="frm" />
+					</h:panelGrid> 
+						
+				    
+				</p:panel>
+			</h:form>
+		
+		</ui:define>
+	</ui:composition>
+</html>

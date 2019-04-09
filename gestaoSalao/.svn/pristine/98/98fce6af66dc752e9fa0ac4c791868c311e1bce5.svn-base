@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:pm="http://primefaces.org/mobile">
+	
+	<pm:field>
+		<p:outputLabel for="inputNome" value="#{msg.nome}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>
+		<p:inputText id="inputNome" value ="#{clienteMobileMB.cliente.nome}"  size= "50" />
+	</pm:field>
+	
+	<pm:field>
+		<p:outputLabel for="selectSexo" value="#{msg.sexo}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>
+		<p:selectOneRadio label="" id="selectSexo" value="#{clienteMobileMB.cliente.sexo}" >   
+	        <f:selectItem itemLabel="Feminino" itemValue="F" />  
+	        <f:selectItem itemLabel="Masculino" itemValue="M" />   
+	    </p:selectOneRadio >
+    </pm:field>
+    
+    <pm:field>
+    	<p:outputLabel value="#{msg.rg} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>	
+		<p:inputMask  value = "#{clienteMobileMB.cliente.rg}" mask="99.999.999-9" />
+    </pm:field>
+    
+    <pm:field>
+    	<p:outputLabel value="#{msg.cpf} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>	
+		<p:inputMask  value = "#{clienteMobileMB.cliente.cpf}" mask="999.999.999-99" />
+    </pm:field>
+    
+    <p:spacer height="10" />
+    
+    <p:panel header="#{msg.endereco}" toggleable="true" collapsed="true" >
+    
+    	 <pm:field>
+    	 	<p:outputLabel value="#{msg.logradouro} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>	
+			<p:inputText value = "#{clienteMobileMB.cliente.logradouro}"  size="50"/>
+    	 </pm:field>
+    	 
+    	  <pm:field>
+    	  		<p:outputLabel value="#{msg.numero} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>	
+				<p:inputText value = "#{clienteMobileMB.cliente.numero}" />
+    	  </pm:field>
+    	  
+    	   <pm:field>
+    	   		<p:outputLabel value="#{msg.complemento} " />	
+				<p:inputText value = "#{clienteMobileMB.cliente.complemento}" />
+    	   </pm:field>
+    	   
+    	    <pm:field>
+    	    	<p:outputLabel value="#{msg.bairro} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>	
+				<p:inputText value = "#{clienteMobileMB.cliente.bairro}" size="40"/>
+    	    </pm:field>
+    	    
+    	     <pm:field>
+    	     	<p:outputLabel value="#{msg.cidade} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>	
+				<p:inputText value = "#{clienteMobileMB.cliente.cidade}" size="40"/>
+    	     </pm:field>
+    	     
+    	     <pm:field>
+    	     	<p:outputLabel value="#{msg.estado} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>	
+    	     	<p:selectOneMenu label="" id="selectCidade" value="#{clienteMobileMB.cliente.estado}" >   
+			        <f:selectItem itemLabel="Selecione" itemValue="" />  
+		            <f:selectItem itemLabel="AC" itemValue="AC" />  
+		            <f:selectItem itemLabel="AL" itemValue="AL" /> 
+		            <f:selectItem itemLabel="AP" itemValue="AP" />
+		            <f:selectItem itemLabel="AM" itemValue="AM" />
+		            <f:selectItem itemLabel="BA" itemValue="BA" />
+		            <f:selectItem itemLabel="CE" itemValue="CE" />
+		            <f:selectItem itemLabel="DF" itemValue="DF" />
+		            <f:selectItem itemLabel="ES" itemValue="ES" />
+		            <f:selectItem itemLabel="GO" itemValue="GO" /> 
+		            <f:selectItem itemLabel="MA" itemValue="MA" /> 
+		            <f:selectItem itemLabel="MT" itemValue="MT" /> 
+		            <f:selectItem itemLabel="MS" itemValue="MS" /> 
+		            <f:selectItem itemLabel="MG" itemValue="MG" /> 
+		            <f:selectItem itemLabel="PA" itemValue="PA" /> 
+		            <f:selectItem itemLabel="PB" itemValue="PB" /> 
+		            <f:selectItem itemLabel="PR" itemValue="PR" /> 
+		            <f:selectItem itemLabel="PE" itemValue="PE" /> 
+		            <f:selectItem itemLabel="PI" itemValue="PI" /> 
+		            <f:selectItem itemLabel="RJ" itemValue="RJ" /> 
+		            <f:selectItem itemLabel="RN" itemValue="RN" />
+		            <f:selectItem itemLabel="RS" itemValue="RS" />
+		            <f:selectItem itemLabel="RO" itemValue="RO" />
+		            <f:selectItem itemLabel="RR" itemValue="RR" />
+		            <f:selectItem itemLabel="SC" itemValue="SC" />
+		            <f:selectItem itemLabel="SP" itemValue="SP" /> 
+		            <f:selectItem itemLabel="SE" itemValue="SE" /> 
+		            <f:selectItem itemLabel="TO" itemValue="TO" />   
+			    </p:selectOneMenu >
+    	     </pm:field>
+    	     
+    	     <pm:field>
+    	     </pm:field>
+    	
+    	
+    	
+    </p:panel>
+    
+    <p:spacer height="10" />
+    
+    <p:panel header="#{msg.contato}" toggleable="true" collapsed="true" >
+    	
+    	<pm:field>
+    		<p:outputLabel value="#{msg.tel_residencial} " />	
+			<p:inputMask value = "#{clienteMobileMB.cliente.telResidencial}" mask="(999) 9999-9999" />
+    	</pm:field>
+    	
+    	<pm:field>
+    		<p:outputLabel value="#{msg.tel_celular} " />	
+			<p:inputMask value = "#{clienteMobileMB.cliente.telCelular}" mask="(999) 9999-9999?9"/>
+    	</pm:field>
+    	
+    	<pm:field>
+    		<p:outputLabel value="#{msg.tel_rec} " />	
+			<p:inputMask value = "#{clienteMobileMB.cliente.telRecado}" mask="(999) 9999-9999?9"/>
+    	</pm:field>
+    	
+    	<pm:field>
+    		<p:outputLabel value="#{msg.email} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel>		
+			<p:inputText value = "#{clienteMobileMB.cliente.email}" size="80"/>
+    	</pm:field>
+    	
+    </p:panel>
+
+	
+
+</html>

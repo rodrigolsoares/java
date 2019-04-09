@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="../templates/comumExterno.xhtml">
+
+		<ui:define name="pageCenter">
+  			
+  			<h:panelGrid columns="2" cellpadding="10">
+  			
+	  			<p:accordionPanel style="width:900px;" multiple="false" activeIndex="null">
+	  				<p:tab title="Plano Básico"> 
+	  				</p:tab>
+	  				<p:tab title="Plano Intermediário"> 
+	  				</p:tab>
+	  				<p:tab title="Plano Avançado"> 
+	  				</p:tab>
+	  			</p:accordionPanel>
+	  			
+	  			<p:panel header="Envio de Sms para clientes" style="width:300px;" styleClass="" > 
+	  				Adquirindo qualquer um dos planos ao lado, envie sms aos seus clientes
+	  				por apens XXX por sms. Através de um plano pré pago
+	  				
+	  			</p:panel>
+	  			
+  			</h:panelGrid>
+  			
+		</ui:define>
+		
+	</ui:composition>
+</html>

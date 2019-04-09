@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h1><p:outputLabel value="Dados do Plano" /></h1>
+	<p:separator/> <br/>
+	
+	<h:panelGrid columns="3" cellpadding="10">
+		 	  	 
+		<h:panelGroup>  
+			<p:outputLabel value="#{msg.selPlano}" /><br />	
+			<h:outputText value="#{salaoMB.responsavel.plano.codigo}" />  
+		</h:panelGroup>
+        
+        <h:panelGroup>   
+           <p:outputLabel value="#{msg.diaParaVenc}" /><br />
+           <h:outputText value="#{salaoMB.responsavel.diaVencimento}" />  
+        </h:panelGroup> 	
+         
+        <h:panelGroup>  
+           <p:outputLabel value="#{msg.formaDeRecebimentoFatura}" /><br /> 
+           <h:outputText value = "" />
+        </h:panelGroup>  
+	
+	</h:panelGrid>
+ 	
+ 	<h3><p:outputLabel value="Detalhe do Plano" /></h3>  
+	<p:separator/>
+
+	<h:panelGroup > 
+		<p:outputLabel value="#{msg.descPlano}" /><br />	
+		<h:outputText value="#{salaoMB.plano.descricao}" /><br /><br />
+	</h:panelGroup>
+	  	
+	<h:panelGroup> 
+		<p:outputLabel value="#{msg.vlrPlano}" /><br />	
+		<h:outputText value="R$ " />
+		<h:outputText value="#{salaoMB.plano.valor}" >
+			<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+		</h:outputText>
+	</h:panelGroup>
+
+
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<ui:composition template="../templates/comumExterno.xhtml">
+
+		<ui:define name="pageCenter">
+
+  			<div class="container">
+			   <table id="form-table">
+					<tr>
+						<td colspan="2">Achou interessante ou tem alguma dúvida? <br />Deixe seus dados e em breve entraremos em contato.</td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td><label>Nome</label></td>
+						<td><input type="text" id="nome" name="nome" size="50" value=""/></td>
+						<!-- <td rowspan="7"><img src="images/banner_contrate.jpg" title="20% de desconto" /></td>-->
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td><label>Email</label></td>
+						<td><input type="text" id="email" name="email" size="50" value=""/></td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td><label>Data nasc.</label></td>
+						<td><input type="text" id="dtNasc" name="dtNasc" size="50" value=""/></td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td><label>Telefone</label></td>
+						<td><input type="text" id="fone" name="fone" size="50" value=""/></td>
+					</tr>
+			   </table>
+			</div>
+				
+		</ui:define>
+		
+	</ui:composition>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="../templates/comumInterno.xhtml">
+
+		<ui:define name="pageCenter">
+			
+			<ui:include src="atualiza/altServico.xhtml"></ui:include>
+			
+			<h:panelGrid id= "consulServico" columns="1" rendered="#{!servicoMB.habilitaAlterar}">
+				
+	 			<p:panel id="panelServico" header="#{msg.consulServico}" >
+	 				
+	 				<p:dataTable id="dataServico" paginatorPosition="bottom" var="serv" value="#{servicoMB.listaServico}" 
+					             rendered="#{servicoMB.listaServico.size() > 0}" scrollable="true" scrollHeight="250" >
+					     
+				        <p:column sortBy="#{serv.nome}" headerText="#{msg.colNomeProd}" footerText="" >  
+				            <h:outputText value="#{serv.nome}" />  
+				        </p:column> 
+				        
+				        <p:column sortBy="#{serv.sigla}" headerText="#{msg.colSigla}" footerText="">  	
+				            <h:outputText value="#{serv.sigla}" />  
+				        </p:column> 
+				        
+				        <p:column sortBy="#{serv.valor}" headerText="#{msg.colValor}" style="width:10%" footerText="">  
+				            <h:outputText value="R$ " />
+				            <h:outputText value="#{serv.valor}" >
+				            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+				            </h:outputText>  
+				        </p:column>
+				        
+				        <p:column headerText="#{msg.colStatus}" style="width:6%" footerText="">  
+				           <h:graphicImage value="#{msg.img_ativo}" rendered="#{serv.status == 1}" style="border:0" />
+				           <h:graphicImage value="#{msg.img_inativo}" rendered="#{serv.status == 2}" style="border:0" />
+				        </p:column>
+				        
+				        <p:column style="width:4%" footerText="">  
+				           <p:commandLink  action="#{servicoMB.editar}"  update=":frm">
+				           		<h:graphicImage value="#{msg.img_editar}"  style="border:0" />
+				           		<f:setPropertyActionListener target="#{servicoMB.servico}" value="#{serv}"/>
+				           </p:commandLink>
+				        </p:column>
+				        
+	
+					</p:dataTable>
+				
+					
+				</p:panel>
+			
+			</h:panelGrid>
+			
+
+		</ui:define>
+	</ui:composition>
+	
+	
+
+</html>

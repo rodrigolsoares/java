@@ -1,0 +1,27 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pm="http://primefaces.org/mobile"  contentType="text/html">
+
+	<pm:page title="Portal do Salão Mobile">
+		<pm:view id="main">
+			
+			<pm:header title="Portal do Salão">
+				<f:facet name="left">
+					<p:button value="Back" icon="back" href="/pages/menu.jsf" />
+				</f:facet>
+			</pm:header>
+
+			<p:separator />
+			
+			<h:form id="frm">
+				<ui:insert name="pageCenter"></ui:insert>
+			</h:form>
+
+		</pm:view>
+	</pm:page>
+
+</f:view>
+

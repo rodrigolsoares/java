@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:tab id="tabCadSalao" title="Salão">
+			 	
+		 <p:panel header="Dados do Salão">
+		 	  
+		 	<p:messages id="mesgSalao" showDetail="true" autoUpdate="false" closable="true" escape="false"/>
+ 			
+			<h:panelGrid columns="5" cellpadding="10"> 
+				
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.nomeFanSalao}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+					<p:inputText  value ="#{salaoMB.salao.nomeFantasia}"   size= "50" />
+				</h:panelGroup>
+				
+				<h:panelGroup> 
+					<p:outputLabel value="#{msg.razaoSocial}" ></p:outputLabel><br />	
+					<p:inputText  value ="#{salaoMB.salao.razaoSocial}"   size= "50" />
+				</h:panelGroup>
+				
+			    <h:panelGroup>
+					<p:outputLabel value="#{msg.cnpj} " ></p:outputLabel><br />	
+					<p:inputMask  value = "#{salaoMB.salao.cnpj}" mask="99.999.999/9999-99"/>
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<p:outputLabel value="#{msg.inscEstadual} " ></p:outputLabel><br />	
+					<p:inputMask  value = "#{salaoMB.salao.inscEstadual}" mask="999.99999-99"/>
+				</h:panelGroup>
+				
+			</h:panelGrid>
+	 		
+	 		<br />
+			<p:separator/>
+			<br />
+			
+			<p:panel id="pnlEnd" header="#{msg.endereco}" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panelEnd">  
+	
+				<h:panelGrid columns="3" cellpadding="5">
+					 
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.logradouro} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{salaoMB.salao.logradouro}"  size="50"/>
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.numero} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{salaoMB.salao.numero}" />
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.complemento} " ></p:outputLabel><br />
+						<p:inputText value = "#{salaoMB.salao.complemento}" />
+					</h:panelGroup>
+					
+				</h:panelGrid>
+				
+				<h:panelGrid columns="4" cellpadding="5">
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.cep}" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{salaoMB.salao.cep}" />
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.bairro} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{salaoMB.salao.bairro}" size="40"/>
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.cidade} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+						<p:inputText value = "#{salaoMB.salao.cidade}" size="40"/>
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.estado} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />
+						<p:selectOneMenu value="#{salaoMB.salao.estado}" style="width:110px;">  
+				            <f:selectItem itemLabel="Selecione" itemValue="" />  
+				            <f:selectItem itemLabel="AC" itemValue="AC" />  
+				            <f:selectItem itemLabel="AL" itemValue="AL" /> 
+				            <f:selectItem itemLabel="AP" itemValue="AP" />
+				            <f:selectItem itemLabel="AM" itemValue="AM" />
+				            <f:selectItem itemLabel="BA" itemValue="BA" />
+				            <f:selectItem itemLabel="CE" itemValue="CE" />
+				            <f:selectItem itemLabel="DF" itemValue="DF" />
+				            <f:selectItem itemLabel="ES" itemValue="ES" />
+				            <f:selectItem itemLabel="GO" itemValue="GO" /> 
+				            <f:selectItem itemLabel="MA" itemValue="MA" /> 
+				            <f:selectItem itemLabel="MT" itemValue="MT" /> 
+				            <f:selectItem itemLabel="MS" itemValue="MS" /> 
+				            <f:selectItem itemLabel="MG" itemValue="MG" /> 
+				            <f:selectItem itemLabel="PA" itemValue="PA" /> 
+				            <f:selectItem itemLabel="PB" itemValue="PB" /> 
+				            <f:selectItem itemLabel="PR" itemValue="PR" /> 
+				            <f:selectItem itemLabel="PE" itemValue="PE" /> 
+				            <f:selectItem itemLabel="PI" itemValue="PI" /> 
+				            <f:selectItem itemLabel="RJ" itemValue="RJ" /> 
+				            <f:selectItem itemLabel="RN" itemValue="RN" />
+				            <f:selectItem itemLabel="RS" itemValue="RS" />
+				            <f:selectItem itemLabel="RO" itemValue="RO" />
+				            <f:selectItem itemLabel="RR" itemValue="RR" />
+				            <f:selectItem itemLabel="SC" itemValue="SC" />
+				            <f:selectItem itemLabel="SP" itemValue="SP" /> 
+				            <f:selectItem itemLabel="SE" itemValue="SE" /> 
+				            <f:selectItem itemLabel="TO" itemValue="TO" />   
+				        </p:selectOneMenu>
+				    </h:panelGroup>
+					
+				</h:panelGrid>
+				
+			</p:panel>
+			
+			<br />
+			<p:separator/>
+			<br />
+			
+			<p:panel id="pnlContatoSalao" header="#{msg.contato}" toggleable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panelCont">  
+				
+				
+				<h:panelGrid columns="3" cellpadding="5">
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.tel_1} "><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputMask value = "#{salaoMB.salao.tel1}" mask="(999) 9999-9999" />
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.tel_2} "></p:outputLabel><br />	
+						<p:inputMask value = "#{salaoMB.salao.tel2}" mask="(999) 9999-9999" />
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<p:outputLabel value="#{msg.email} " ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+						<p:inputText value = "#{salaoMB.salao.email}" size="100" />
+					</h:panelGroup>
+					
+					
+				</h:panelGrid>
+				
+			</p:panel>
+ 		 	  
+		 </p:panel>
+ 		 	
+ 	</p:tab>
+</html>

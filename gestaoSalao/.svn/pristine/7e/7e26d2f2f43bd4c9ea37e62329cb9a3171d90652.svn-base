@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	
+	<h:panelGroup> 
+		<p:outputLabel value="#{msg.nomeFun}" /><br />	
+		 <p:autoComplete id="sugFunc" value="#{encaixeMB.funcionario}"   
+                      completeMethod="#{encaixeMB.completaFuncionario}"  
+                      var="func" itemLabel="#{func.nome}" itemValue="#{func}" 
+                      forceSelection="true" size="70" converter="#{funcionarioConverterSugestion}" minQueryLength="3">  
+
+              <f:facet name="itemtip">  
+                  <h:panelGrid  columns="2" cellpadding="5">  
+                      
+                      <h:outputText value="#{msg.nomeCli}" />  
+                      <h:outputText id="nomeSugFunc" value="#{func.nome}" />  
+
+					  <h:outputText value="#{msg.rg}" />  
+                      <h:outputText value="#{func.rg}"/>
+                      
+                      <h:outputText value="#{msg.cpf} " />  
+                      <h:outputText id="cpfFunc" value="#{func.cpf}" />  
+                        
+                  </h:panelGrid>  
+              </f:facet>  
+
+          </p:autoComplete><br/><br/>
+	</h:panelGroup>
+	
+	<h:panelGroup>
+	  <p:outputLabel value="#{msg.nomeCli}" for="sugCliente" /><br />
+	  <p:autoComplete id="sugCliente" value="#{encaixeMB.cliente}"   
+                      completeMethod="#{encaixeMB.completaCliente}"  
+                      var="cli" itemLabel="#{cli.nome}" itemValue="#{cli}" 
+                      forceSelection="true" size="70" converter="#{clienteConverterSugestion}" minQueryLength="3">  
+
+              <f:facet name="itemtip">  
+                  <h:panelGrid  columns="2" cellpadding="5">  
+                      
+                      <h:outputText value="#{msg.nomeCli}" />  
+                      <h:outputText id="nomeSug" value="#{cli.nome}" />  
+
+						<h:outputText value="#{msg.rg}" />  
+                      <h:outputText value="#{cli.rg}"/>
+                      
+                      <h:outputText value="#{msg.cpf} " />  
+                      <h:outputText id="year" value="#{cli.cpf}" />  
+                        
+                  </h:panelGrid>  
+              </f:facet>  
+
+          </p:autoComplete><br/><br/>
+            
+	</h:panelGroup>
+	
+	<p:separator />	 
+	
+	 <br />
+	 
+	<h:panelGrid columns="2">
+	 
+        <p:selectCheckboxMenu id="lstServido" label="#{msg.agServico}" value="#{encaixeMB.agenda.listaServicoSelecionado}" filter="true"  
+                              filterText="Filter" filterMatchMode="startsWith" panelStyle="width:400px" >  
+            <f:selectItems value="#{encaixeMB.listaServico}" />  
+            <p:ajax listener="#{encaixeMB.calculaServico}"  update=":frm:tabViewEnxaixe:tabView, :frm:tabViewEnxaixe:panelTotal"/>
+            <p:ajax event="toggleSelect" listener="#{encaixeMB.calculaTodosServicos}"  update=":frm:tabViewEnxaixe:tabView, :frm:tabViewEnxaixe:panelTotal"/>
+            
+        </p:selectCheckboxMenu>
+         
+        <p:selectCheckboxMenu label="#{msg.agAjudante}" value="#{encaixeMB.agenda.listaAjudanteSelecionado}" filter="true" 
+                              filterText="Filter" filterMatchMode="startsWith" panelStyle="width:400px" rendered="#{encaixeMB.habilitaAjudante}">  
+            <f:selectItems value="#{encaixeMB.listaAjudante}" />  
+        </p:selectCheckboxMenu>
+       
+       </h:panelGrid>
+	
+	<br />
+	
+	<p:tabView id="tabView" dynamic="true">
+	
+		<p:tab id="tab1" title="#{msg.agTipoRateio}" rendered="#{encaixeMB.habilitaAjudante}">
+			 <p:selectOneRadio value="#{encaixeMB.agenda.tipoRateio}">
+				<f:selectItem itemLabel="Ajudantes" itemValue="1" />
+				<f:selectItem itemLabel="Meio a Meio" itemValue="2" />
+			</p:selectOneRadio>
+		</p:tab>
+		
+		<p:tab id="tab2" title="#{msg.agFormaPagto}">
+			<p:selectOneRadio value="#{encaixeMB.agenda.codigoPagamento}"  >  
+	            <f:selectItems value="#{encaixeMB.listaFormaPagamento}" />
+	            <p:ajax event="valueChange" update=":frm:tabViewEnxaixe:panelTotal"/> 
+	            
+	        </p:selectOneRadio>
+		</p:tab>
+		
+		<p:tab id="tab3" title="#{msg.agFormaPagto}">
+		
+			 <h:panelGrid columns="3">
+       
+			        <h:panelGroup> 
+						<p:outputLabel value="#{msg.valor}" /><br />	
+						<pe:inputNumber id="txtVlr" value ="#{encaixeMB.agenda.valor}"  
+						                symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  readonly="true" />
+					</h:panelGroup>
+					
+					<h:panelGroup> 
+						<p:outputLabel value="#{msg.vlrDesconto}" /><br />
+						<pe:inputNumber id="txtVlrDesc" value ="#{encaixeMB.agenda.desconto}"  
+						                symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  >
+						         <p:ajax event="blur" listener="#{encaixeMB.calculaServico}" update=":frm:tabViewEnxaixe:tabView, :frm:tabViewEnxaixe:panelTotal"/>
+						</pe:inputNumber>	
+						
+					</h:panelGroup>
+					
+					<h:panelGroup> 
+						<p:outputLabel value="#{msg.vlrCxFunc}" /><br />	
+						<pe:inputNumber id="txtVlrCaixa" value ="#{encaixeMB.agenda.caixinha}"  
+						                symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  />
+					</h:panelGroup>
+				
+				</h:panelGrid>
+				
+		</p:tab>
+		
+	</p:tabView>
+	
+	<br />
+	
+	<p:panel id="panelStatus" header="#{msg.agStatus}" >
+		<p:selectOneRadio value="#{encaixeMB.agenda.codigoAtendimento}">  
+            <f:selectItems value="#{encaixeMB.listaStatusAtendimento}" /> 
+        </p:selectOneRadio>
+	</p:panel>
+	
+	<br />
+	
+	<h:panelGrid id= "panelTotal" columns="2">
+		
+		<p:panel   header="#{msg.vlrTotal}" style="width:200px">	
+			<pe:inputNumber id="txtVlrTotal" value ="#{encaixeMB.agenda.valorTotal}"  
+							symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  readonly="true" />
+			
+		</p:panel>
+		
+		<p:panel  header="#{msg.chequeDtComp}" rendered="#{encaixeMB.agenda.codigoPagamento == 4}">	
+			<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" value ="#{encaixeMB.agenda.dataCompensaCheque}" id="dtCheque" /> 
+		</p:panel>
+		
+	</h:panelGrid>
+      
+    <br />
+       
+	<p:separator />	
+	
+	<br />
+	
+	<h:panelGrid columns="3">
+		<p:commandButton value="Gravar" action="#{encaixeMB.gravar}" rendered="#{encaixeMB.agenda.codigo == 0}" update=":frm" />
+		<p:commandButton value="Alterar" action="#{encaixeMB.alterar}" rendered="#{encaixeMB.agenda.codigo != 0}" update=":frm" />
+		<p:commandButton value="Excluir" action="#{encaixeMB.excluir}" rendered="#{encaixeMB.agenda.codigo != 0}" update=":frm" />
+		<p:commandButton value="#{msg.cdRapidoCliente}" onsuccess="modCadNovoCliente.show()" update=":frm:tabViewEnxaixe" />
+	</h:panelGrid>
+		
+		
+	
+
+</html>

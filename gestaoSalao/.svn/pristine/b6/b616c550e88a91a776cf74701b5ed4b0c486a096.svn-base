@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:tab id="tbPlano" title="Plano">
+			 	
+ 		 <p:panel header="Seleção do Plano">
+ 		 	  
+ 		 	  <p:messages id="mesgPlano" showDetail="true" autoUpdate="false" closable="true" escape="false"/>
+ 		 	  
+ 		 	  <h:panelGrid columns="3" cellpadding="10">
+		 	  	 
+		 	  	 <h:panelGroup>  
+					<p:outputLabel value="#{msg.selPlano}" /><br />	
+					<p:selectOneMenu id="plano" value="#{salaoMB.responsavel.plano.codigo}" size="100">  
+		                <f:selectItem itemLabel="#{msg.selecione}" itemValue="0" />  
+		                <f:selectItems value="#{salaoMB.mapPlano}" /> 
+		                <p:ajax listener="#{salaoMB.selecionaDadosPlano}"  update="gridDetalhePlano"/>      
+		            </p:selectOneMenu> 
+		         </h:panelGroup>
+		         
+		         <h:panelGroup>   
+		            <p:outputLabel value="#{msg.diaParaVenc}" /><br />
+		            <p:selectOneMenu id="diaVenc" value="#{salaoMB.responsavel.diaVencimento}" size="100">  
+		                <f:selectItem itemLabel="#{msg.selecione}" itemValue="0" />  
+		                <f:selectItem itemLabel="5" itemValue="5" />  
+		                <f:selectItem itemLabel="10" itemValue="10" />  
+		                <f:selectItem itemLabel="15" itemValue="15" />
+		                <f:selectItem itemLabel="20" itemValue="20" />
+		                <f:selectItem itemLabel="25" itemValue="25" />
+		                <f:selectItem itemLabel="30" itemValue="30" />       
+		            </p:selectOneMenu>
+		          </h:panelGroup> 	
+		          
+		          <h:panelGroup>  
+		            <p:outputLabel value="#{msg.formaDeRecebimentoFatura}" /><br /> 
+		            <p:selectOneRadio value="#{salaoMB.responsavel.tipoCobranca.codigo}">
+						<f:selectItem itemLabel="Correspondência" itemValue="1" />
+						<f:selectItem itemLabel="E-mail" itemValue="2" />
+					</p:selectOneRadio>
+		          </h:panelGroup>  
+				
+		
+ 		 	  </h:panelGrid>
+ 		 	  
+ 		 	  <p:separator/>
+ 		 	  
+ 		 	  <h:panelGrid id="gridDetalhePlano" >
+ 		 	  	
+ 		 	  	<h:panelGroup > 
+					<p:outputLabel value="#{msg.descPlano}" /><br />	
+ 		 	  		<h:outputText value="#{salaoMB.plano.descricao}" /><br /><br />
+ 		 	  	</h:panelGroup>
+ 		 	  	
+ 		 	  	<h:panelGroup> 
+					<p:outputLabel value="#{msg.vlrPlano}" /><br />	
+ 		 	  		<h:outputText value="R$ " />
+ 		 	  		<h:outputText value="#{salaoMB.plano.valor}" >
+ 		 	  			<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+ 		 	  		</h:outputText>
+ 		 	  	</h:panelGroup>
+
+ 		 	  </h:panelGrid>
+ 		 
+ 		 	  
+ 		 </p:panel>
+ 		 	
+ 	</p:tab>
+ 	
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+		
+		<p:dataTable id="dataControle"  var="ag" value="#{fluxoDeCaixaMB.fluxoCaixa.listaCheques}" rendered="#{fluxoDeCaixaMB.fluxoCaixa.listaCheques.size() > 0}"
+				             scrollable="true" scrollHeight="250" >
+			     
+	        <p:column sortBy="#{ag.nomeCliente}" headerText="#{msg.colCliente}">  
+	            <h:outputText value="#{ag.nomeCliente}" />  
+	        </p:column> 
+	        
+	        <p:column sortBy="#{ag.valor}" headerText="#{msg.colValor}">  
+	            <h:outputText value="#{ag.valor}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	         <p:column sortBy="#{ag.desconto}" headerText="#{msg.colDesconto}">  
+	            <h:outputText value="#{ag.desconto}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column>
+	        
+	        <p:column sortBy="#{ag.valorTotal}" headerText="#{msg.colValortotal}">  
+	            <h:outputText value="#{ag.valorTotal}" >
+	            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+	            </h:outputText>  
+	        </p:column>
+	        
+	        <p:column sortBy="#{ag.data}" headerText="#{msg.colData}">  
+	            <h:outputText value="#{ag.data}" >
+	            	<f:convertDateTime pattern="dd/MM/yyyy" />	
+	            </h:outputText>  
+	        </p:column> 
+	        
+	        <p:column sortBy="#{ag.dataCompensaCheque}" headerText="#{msg.colDataCompCheque}">  
+	            <h:outputText value="#{ag.dataCompensaCheque}" >
+	            	<f:convertDateTime pattern="dd/MM/yyyy" />	
+	            </h:outputText>  
+	        </p:column>  
+	        
+	        
+	        
+
+		</p:dataTable>
+									
+</html>

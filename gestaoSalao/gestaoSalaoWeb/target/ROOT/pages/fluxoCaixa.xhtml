@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="../templates/comumInterno.xhtml">
+		
+		<ui:define name="pageCenter">
+			
+			<p:outputLabel value="#{msg.descricaoObrigatorio} " style="color:#FF0000;"/><br /><br />
+			
+			<p:panel id="panelFluxo" header="#{msg.fluxoCaixa}" >
+			
+				<h:panelGrid columns="5" cellpadding="10" > 
+	 				
+	 				<h:panelGroup>
+		 				<br/>
+		 				<h:outputLabel value="Selecione o período desejado:" />
+					</h:panelGroup>
+					
+					<h:panelGroup> 
+		 				<p:outputLabel value="Data de Início:" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />	
+		 				<p:calendar locale="pt_BR" value ="#{fluxoDeCaixaMB.fluxoCaixa.dataInicial}" pattern="dd/MM/yyyy" id="popupVencAte" />  	 
+					</h:panelGroup>
+	
+					
+			    	 <h:panelGroup> 
+		 				<p:outputLabel value="Data Fim:" ><h:graphicImage value="#{msg.img_arterisco}" style="border:none;" /></p:outputLabel><br />		
+		 				<p:calendar locale="pt_BR" value ="#{fluxoDeCaixaMB.fluxoCaixa.dataFinal}" pattern="dd/MM/yyyy" id="popupPagtoDe" />
+					</h:panelGroup>
+	
+					<p:commandButton value="#{msg.btnConsulta}" action="#{fluxoDeCaixaMB.pesquisar}" update=":frm" /> 
+					
+			    </h:panelGrid>
+			
+				
+				<p:accordionPanel id="acord" dynamic="true" cache="true" widgetVar="acordVar" multiple="false" activeIndex="null"> 
+					 
+					 <p:tab title="Extrato de Despesas" >
+					 	<ui:include src="relatorioFluxo/extratoDespesa.xhtml"></ui:include>
+					 </p:tab>
+					 
+					  <p:tab title="Extrato de Comissões">
+					  	<ui:include src="relatorioFluxo/extratoComissao.xhtml"></ui:include>
+					  </p:tab>
+					  
+					  <p:tab title="Extrato de Serviços">
+					  	<ui:include src="relatorioFluxo/extratoServico.xhtml"></ui:include>
+					  </p:tab>
+					  
+					  <p:tab title="Acompanhamento de Pendências ">
+					  	<ui:include src="relatorioFluxo/extratoPendencia.xhtml"></ui:include>
+					  </p:tab>
+					  
+					  <p:tab title="Controle de Cheques">
+					  	<ui:include src="relatorioFluxo/controleCheque.xhtml"></ui:include>
+					  </p:tab>
+				
+				</p:accordionPanel>
+				
+				<br /><br />
+	
+ 				<p:outputLabel value="Total Despesas:  " />
+ 				<h:outputText value="R$ " />
+ 				<h:outputText value="#{fluxoDeCaixaMB.fluxoCaixa.despesaTotal}" >
+ 					<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+ 				</h:outputText>
+ 				<p:separator />	
+ 				
+ 				
+ 				<p:outputLabel value="Total Comissão:  " />
+ 				<h:outputText value="R$ " />
+ 				<h:outputText value="#{fluxoDeCaixaMB.fluxoCaixa.comissaoTotal}" >
+ 					<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+ 				</h:outputText>
+ 				<p:separator />	
+ 				
+ 				<p:outputLabel value="Total Serviços:  " />
+ 				<h:outputText value="R$ " />
+ 				<h:outputText value="#{fluxoDeCaixaMB.fluxoCaixa.servicoTotal}" >
+ 					<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+ 				</h:outputText>
+ 				<p:separator />	
+ 				
+ 				<p:outputLabel value="Lucro:  " />
+ 				<h:outputText value="R$ " />
+ 				<h:outputText value="#{fluxoDeCaixaMB.fluxoCaixa.lucro}" >
+ 					<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+ 				</h:outputText>	
+ 				<p:separator />		
+		 								
+				<ui:include src="poupup/relatorioPorFuncionarioFluxo.xhtml"></ui:include>
+				<ui:include src="poupup/relatorioPorClienteFluxo.xhtml"></ui:include>
+				
+				
+			</p:panel>
+
+		</ui:define>
+		
+	</ui:composition>
+</html>

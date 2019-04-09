@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<br />
+	 
+	<p:dataTable id="dataCliente"  var="ag" value="#{encaixeMB.listaEncaixe}" emptyMessage="Nenhum serviço Encontrado." 
+	             widgetVar="listaEncaixe" filteredValue="#{encaixeMB.listaFiltroEncaixe}" >
+        
+        <p:column id="colNomeFunc" sortBy="#{ag.nomeFuncionario}" filterBy="#{ag.nomeFuncionario}" filterStyle="width:200px" headerText="#{msg.colFunc}" >  
+            <h:outputText value="#{ag.nomeFuncionario}" />  
+        </p:column> 
+        
+        <p:column id="colNomeClie" sortBy="#{ag.nomeCliente}" filterBy="#{ag.nomeCliente}" filterStyle="width:200px" headerText="#{msg.colCliente}" >  
+            <h:outputText value="#{ag.nomeCliente}" />  
+        </p:column>
+        
+        <p:column sortBy="#{ag.nomeServico}" headerText="#{msg.colServicos}">  
+            <h:outputText value="#{ag.servicos}" />  
+        </p:column>
+         
+        <p:column sortBy="#{ag.nomeStatus}" headerText="#{msg.colStatusAtendimento}"  >
+            <h:outputText value="#{ag.nomeStatus}" />   
+        </p:column>
+        
+        <p:column id="colFormaPagto" sortBy="#{ag.nomePagamento}" headerText="#{msg.colPagto}" > 
+            		<h:outputText value="#{ag.nomePagamento}" />   
+        </p:column>
+        
+        <p:column sortBy="#{ag.valorTotal}" style="width:7%" headerText="#{msg.colValor}">  
+            <h:outputText value="R$ " />
+            <h:outputText value="#{ag.valorTotal}" >
+            	<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>	
+            </h:outputText>  
+        </p:column>
+        
+        <p:column style="width:6%" footerText="">  
+	          <p:commandButton icon="ui-icon-tag" action="#{encaixeMB.editar}" update=":frm:tabViewEnxaixe:tabView, :frm:tabViewEnxaixe:panelTotal, :frm:tabViewEnxaixe:panelStatus, :frm:tabViewEnxaixe:lstServido, :frm:tabViewEnxaixe:sugFunc, :frm:tabViewEnxaixe:sugCliente, :frm:tabViewEnxaixe">
+	          	<f:setPropertyActionListener target="#{encaixeMB.agenda.codigo}" value="#{ag.codigo}"/>
+	          	<f:setPropertyActionListener target="#{encaixeMB.agenda.porcentagem}" value="#{ag.porcentagem}"/>
+	          </p:commandButton>
+	     </p:column>
+      
+	              
+	</p:dataTable>
+	
+</html>

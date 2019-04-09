@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h1><p:outputLabel value="Dados do Plano" /></h1>
+		
+	<h:panelGrid styleClass="tb-dados-plano" columns="3" cellpadding="15px" cellspacing="15px" style="width:100%;">
+		 	  	 
+		<h:panelGroup>  
+			<p:outputLabel value="Plano Selecionado" style="font-size:17px; font-weight:bold;"/>
+			<h:outputText value="Básico" style="font-size:17px;" rendered="#{salaoMB.responsavel.plano.codigo == '1'}"/>  	
+			<h:outputText value="Intermediário" style="font-size:17px;" rendered="#{salaoMB.responsavel.plano.codigo == '2'}"/>
+			<h:outputText value="Avançado" style="font-size:17px;" rendered="#{salaoMB.responsavel.plano.codigo == '3'}"/> 
+		</h:panelGroup>
+        
+        <h:panelGroup>   
+           <p:outputLabel value="#{msg.diaParaVenc}" style="font-size:17px; font-weight:bold;" />
+           <h:outputText value="#{salaoMB.responsavel.diaVencimento}" style="font-size:17px;" />  
+        </h:panelGroup> 
+        
+        <h:panelGroup> 
+			<p:outputLabel value="#{msg.vlrPlano}" style="font-size:17px; font-weight:bold;" />
+			<h:outputText value="R$ " style="font-size:17px;" />
+			<h:outputText value="#{salaoMB.plano.valor}" style="font-size:17px;">
+				<f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="3"/>
+			</h:outputText>
+		</h:panelGroup>	
+	
+	</h:panelGrid>
+ 	
+</html>

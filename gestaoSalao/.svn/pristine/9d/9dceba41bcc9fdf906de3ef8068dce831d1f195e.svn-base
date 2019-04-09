@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:pm="http://primefaces.org/mobile">
+ 
+	<h:head>
+
+	</h:head>
+
+	<h:body>
+	
+		<pm:page title="Portal do Salão Mobile" >
+		
+				<pm:header title="Portal do Salão" swatch="b" >
+					 <p:tabMenu activeIndex="0" styleClass="ui-listview-inset ui-corner-all ui-group-theme-a">
+	                    <p:menuitem value="Home" icon="ui-icon-home" url="#" iconPos="bottom"/>
+	                    <p:menuitem value="Cadastrar Salão" icon="ui-icon-gear" url="#" iconPos="bottom"/>
+	                    <p:menuitem value="Contato" icon="ui-icon-search" url="#" iconPos="bottom"/>
+	                </p:tabMenu>
+				</pm:header>
+					
+				<p:separator/>
+	     
+	 			<ui:insert name="pageCenter"></ui:insert>
+				<pm:footer title="TI RR Soares Tecnologia" swatch="b"></pm:footer>
+		</pm:page>
+	</h:body>
+</html>
+
+
+

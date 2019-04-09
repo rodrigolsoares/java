@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	 
+	 <p:dialog id="modlAgend" header="Resultado Agendamento" widgetVar="modalAgendamento" closable="false"  modal="true" height="100" width="400">
+	 	<h:outputLabel value="#{agendaMB.mensagemAgendamento}" escape="false" rendered="#{!agendaMB.sucessoAgendamento}"/>
+	 	<h:outputLabel value="#{msg.sucessoAgendamento}" rendered="#{agendaMB.sucessoAgendamento}"/> <br/><br/>
+	 	<p:commandButton value="#{msg.ok}" action="#{agendaMB.posCadastro}" update="frm" />
+	 </p:dialog>
+	 
+ 	<p:dialog id="modalDialog" header="Agendamento" widgetVar="agendamentoPoup" dynamic="true" closable="false" resizable="false" modal="true" height="550" width="600">  
+	    
+	    <h:panelGroup> 
+			<p:outputLabel value="#{msg.nomeFun}" /><br />	
+			<p:inputText value ="#{agendaMB.agenda.nomeFuncionario}"  size= "70" readonly="true" /><br/><br/>
+		</h:panelGroup>
+		
+		<h:panelGroup>
+		  <p:outputLabel value="#{msg.nomeCli}" for="sugCliente" /><br />
+		  <p:autoComplete id="sugCliente" value="#{agendaMB.cliente}"   
+                       completeMethod="#{agendaMB.completaCliente}"  
+                       var="cli" itemLabel="#{cli.nome}" itemValue="#{cli}" 
+                       forceSelection="true" size="70" converter="#{clienteConverterSugestion}" minQueryLength="3" >  
+ 
+               <f:facet name="itemtip">  
+                   <h:panelGrid  columns="2" cellpadding="5">  
+                       
+                       <h:outputText value="#{msg.nomeCli}" />  
+                       <h:outputText id="nomeSug" value="#{cli.nome}" />  
+ 
+ 						<h:outputText value="#{msg.rg}" />  
+                       <h:outputText value="#{cli.rg}"/>
+                       
+                       <h:outputText value="#{msg.cpf} " />  
+                       <h:outputText id="year" value="#{cli.cpf}" />  
+                         
+                   </h:panelGrid>  
+               </f:facet>  
+ 
+           </p:autoComplete><br/><br/>
+             
+		</h:panelGroup>
+		
+		<p:separator />	 
+		
+		 <br />
+		 
+		<h:panelGrid columns="2">
+		 
+	        <p:selectCheckboxMenu label="#{msg.agServico}" value="#{agendaMB.agenda.listaServicoSelecionado}" filter="true"  
+	                              filterText="Filter" filterMatchMode="startsWith" panelStyle="width:400px" >  
+	            <f:selectItems value="#{agendaMB.listaServico}" />  
+	            <p:ajax listener="#{agendaMB.calculaServico}"  update="tabView, panelTotal"/>
+	            <p:ajax event="toggleSelect" listener="#{agendaMB.calculaTodosServicos}"  update="tabView, panelTotal"/>
+	            
+	        </p:selectCheckboxMenu>
+	         
+	        <p:selectCheckboxMenu label="#{msg.agAjudante}" value="#{agendaMB.agenda.listaAjudanteSelecionado}" filter="true" 
+	                              filterText="Filter" filterMatchMode="startsWith" panelStyle="width:400px" rendered="#{agendaMB.habilitaAjudante}">  
+	            <f:selectItems value="#{agendaMB.listaAjudante}" />  
+	        </p:selectCheckboxMenu>
+        
+        </h:panelGrid>
+		
+		<br />
+		
+		<p:tabView id="tabView" dynamic="true">
+		
+			<p:tab id="tab1" title="#{msg.agTipoRateio}" rendered="#{agendaMB.habilitaAjudante}">
+				 <p:selectOneRadio value="#{agendaMB.agenda.tipoRateio}">
+					<f:selectItem itemLabel="Ajudantes" itemValue="1" />
+					<f:selectItem itemLabel="Meio a Meio" itemValue="2" />
+				</p:selectOneRadio>
+			</p:tab>
+			
+			<p:tab id="tab2" title="#{msg.agTipoPagto}">
+				<p:selectOneRadio value="#{agendaMB.agenda.codigoPagamento}" >  
+		            <f:selectItems value="#{agendaMB.listaFormaPagamento}" /> 
+		            <p:ajax event="valueChange" update=":frm:panelTotal"/>
+		        </p:selectOneRadio>
+			</p:tab>
+			
+			<p:tab id="tab3" title="#{msg.agFormaPagto}">
+			
+				 <h:panelGrid columns="3">
+        
+				        <h:panelGroup> 
+							<p:outputLabel value="#{msg.valor}" /><br />	
+							<pe:inputNumber id="txtVlr" value ="#{agendaMB.agenda.valor}"  
+							                symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  readonly="true" />
+						</h:panelGroup>
+						
+						<h:panelGroup> 
+							<p:outputLabel value="#{msg.vlrDesconto}" /><br />
+							<pe:inputNumber id="txtVlrDesc" value ="#{agendaMB.agenda.desconto}"  
+							                symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  >
+							         <p:ajax event="blur" listener="#{agendaMB.calculaServico}" update=":frm:panelTotal"/>
+							</pe:inputNumber>	
+							
+						</h:panelGroup>
+						
+						<h:panelGroup> 
+							<p:outputLabel value="#{msg.vlrCxFunc}" /><br />	
+							<pe:inputNumber id="txtVlrCaixa" value ="#{agendaMB.agenda.caixinha}"  
+							                symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  />
+						</h:panelGroup>
+					
+					</h:panelGrid>
+					
+			</p:tab>
+			
+		</p:tabView>
+		
+		<br />
+		
+		<p:panel header="#{msg.agStatus}" >
+			<p:selectOneRadio value="#{agendaMB.agenda.codigoAtendimento}">  
+	            <f:selectItems value="#{agendaMB.listaStatusAtendimento}" /> 
+	        </p:selectOneRadio>
+		</p:panel>
+		
+		<br />
+		
+		<h:panelGrid id= "panelTotal" columns="2">
+		
+			<p:panel   header="#{msg.vlrTotal}" style="width:200px">	
+				<pe:inputNumber id="txtVlrTotal" value ="#{agendaMB.agenda.valorTotal}"  
+								symbol="R$ "  decimalPlaces="2" decimalSeparator=","  thousandSeparator = "."  readonly="true" />
+				
+			</p:panel>
+			
+			<p:panel  header="#{msg.chequeDtComp}" rendered="#{agendaMB.agenda.codigoPagamento == 4}">	
+				<p:calendar locale="pt_BR" pattern="dd/MM/yyyy" value ="#{agendaMB.agenda.dataCompensaCheque}" id="dtCheque" /> 
+			</p:panel>
+			
+		</h:panelGrid>
+        
+        <br />
+        
+		<p:separator />	
+		
+		<br />
+		
+		<h:panelGrid columns="3">
+			<p:commandButton value="Gravar" action="#{agendaMB.gravarAgendamento}" update="modlAgend"  rendered="#{agendaMB.agenda.codigo == 0}"/>
+			<p:commandButton value="Alterar" action="#{agendaMB.alterarAgendamento}" update="modlAgend" rendered="#{agendaMB.agenda.codigo != 0}" />
+			<p:commandButton value="Excluir" action="#{agendaMB.excluirAgendamento}" update="frm" rendered="#{agendaMB.agenda.codigo != 0}" />
+			<p:commandButton value="Cancelar" onclick="agendamentoPoup.hide()" />
+		</h:panelGrid>
+		  
+	</p:dialog>			
+	
+				
+</html>

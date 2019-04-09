@@ -1,0 +1,14 @@
+br\com\reciclagem\web\vo\MaterialVO.class
+br\com\reciclagem\web\mb\MaterialMB.class
+br\com\reciclagem\web\vo\PerfilVO.class
+br\com\reciclagem\web\service\MenuService.class
+br\com\reciclagem\web\util\MemoriaUsuario.class
+br\com\reciclagem\web\vo\MenuVO.class
+br\com\reciclagem\web\repository\MenuRepository.class
+br\com\reciclagem\web\mb\MenuMB.class
+br\com\reciclagem\web\entidade\MenuEntidade.class
+br\com\reciclagem\web\util\EntityManagerProducer.class
+br\com\reciclagem\web\vo\UsuarioVO.class
+br\com\reciclagem\web\util\Formater.class
+br\com\reciclagem\web\main\CriaTabelas.class
+br\com\reciclagem\web\util\JsfUtil.class

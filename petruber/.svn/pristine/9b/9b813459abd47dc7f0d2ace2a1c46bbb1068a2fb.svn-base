@@ -1,0 +1,10 @@
+<%@ include file="/resources/template/importTags.jsp"%>
+
+<tiles:insertDefinition name="template">
+	
+	<tiles:putAttribute name="body">
+		
+	</tiles:putAttribute>
+
+</tiles:insertDefinition>
+

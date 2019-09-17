@@ -1,0 +1,37 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="portaldosalaoDB"
+		transaction-type="RESOURCE_LOCAL">
+
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <class>br.com.portaldosalao.service.entity.UserEntity</class>
+        <class>br.com.portaldosalao.service.entity.SaloonEntity</class>
+        <class>br.com.portaldosalao.service.entity.ServiceEntity</class>
+        <class>br.com.portaldosalao.service.entity.ProductEntity</class>
+        <class>br.com.portaldosalao.service.entity.ExpenseEntity</class>
+        <class>br.com.portaldosalao.service.entity.ClientEntity</class>
+        <class>br.com.portaldosalao.service.entity.ProfessionalEntity</class>
+        <class>br.com.portaldosalao.service.entity.ProviderEntity</class>
+        <class>br.com.portaldosalao.service.entity.ProfileUserSaloonEntity</class>
+        <class>br.com.portaldosalao.service.entity.ImageEntity</class>
+        <class>br.com.portaldosalao.service.entity.AddressEntity</class>
+        <class>br.com.portaldosalao.service.entity.AboutEntity</class>
+        <class>br.com.portaldosalao.service.entity.PhoneEntity</class>
+        <class>br.com.portaldosalao.service.entity.SocialNetworkEntity</class>
+		
+
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.show_sql" value="create" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+
+	</persistence-unit>
+
+</persistence>

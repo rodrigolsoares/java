@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -31,12 +33,12 @@ public class AssertTestErrorCollector {
 		//Cenário
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
-		Filme filme = new Filme("Filme 1", 2, 5.0);
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 5.0));
 		
 		try {
 			
 			//Ação
-			Locacao locacao = service.alugarFilme(usuario, filme);
+			Locacao locacao = service.alugarFilme(usuario, filmes);
 			
 			
 			//Validação

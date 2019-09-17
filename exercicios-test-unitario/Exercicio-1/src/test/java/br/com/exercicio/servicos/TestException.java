@@ -5,7 +5,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -36,10 +38,10 @@ public class TestException {
 		//Cenário
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
-		Filme filme = new Filme("Filme 1", 2, 5.0);
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 5.0));
 
 		//Ação
-		Locacao locacao = service.alugarFilme(usuario, filme);
+		Locacao locacao = service.alugarFilme(usuario, filmes);
 		
 		//Validação
 		error.checkThat(locacao.getValor(), is(equalTo(5.0)));
@@ -58,10 +60,10 @@ public class TestException {
 		//Cenário
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
-		Filme filme = new Filme("Filme 1", 0, 5.0);
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 0, 5.0));
 
 		//Ação
-		service.alugarFilme(usuario, filme);
+		service.alugarFilme(usuario, filmes);
 		
 	}
 	
@@ -74,12 +76,12 @@ public class TestException {
 		//Cenário
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
-		Filme filme = new Filme("Filme 1", 0, 5.0);
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 0, 5.0));
 
 		try{
 			
 			//Ação
-			service.alugarFilme(usuario, filme);
+			service.alugarFilme(usuario, filmes);
 			Assert.fail("Deveria lançar uma exceção");
 			
 		}catch (Exception e) {
@@ -97,13 +99,13 @@ public class TestException {
 		//Cenário
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
-		Filme filme = new Filme("Filme 1", 0, 5.0);
+		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 0, 5.0));
 
 		expectedException.expect(Exception.class);
 		expectedException.expectMessage("Filme sem estoque");
 		
 		//Ação
-		service.alugarFilme(usuario, filme);
+		service.alugarFilme(usuario, filmes);
 		
 	}
 }

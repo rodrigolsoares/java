@@ -10,11 +10,14 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
+import org.mockito.Mockito;
 
+import br.com.exercicio.calculadora.dao.LocacaoDAO;
 import br.com.exercicio.entidades.Filme;
 import br.com.exercicio.entidades.Locacao;
 import br.com.exercicio.entidades.Usuario;
@@ -26,17 +29,24 @@ import br.com.exercicio.utils.DataUtils;
  * */
 public class TestException {
 	
+	LocacaoService service;
+	
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
 	
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
 	
+	@Before
+	public void init() {
+		service = new LocacaoService();
+		service.setDao(Mockito.mock(LocacaoDAO.class));
+	}
+	
 	@Test
 	public void testLocacao() throws Exception {
 		
 		//Cenário
-		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
 		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 5.0));
 
@@ -58,7 +68,6 @@ public class TestException {
 	public void testLocacaoSemEstoque() throws Exception {
 		
 		//Cenário
-		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
 		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 0, 5.0));
 
@@ -74,7 +83,6 @@ public class TestException {
 	public void testLocacaoSemEstoque2() throws Exception {
 		
 		//Cenário
-		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
 		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 0, 5.0));
 
@@ -97,7 +105,6 @@ public class TestException {
 	public void testLocacaoSemEstoque3() throws Exception {
 		
 		//Cenário
-		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
 		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 0, 5.0));
 

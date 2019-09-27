@@ -18,7 +18,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
+import org.mockito.Mockito;
 
+import br.com.exercicio.calculadora.dao.LocacaoDAO;
 import br.com.exercicio.entidades.Filme;
 import br.com.exercicio.entidades.Locacao;
 import br.com.exercicio.entidades.Usuario;
@@ -46,6 +48,7 @@ public class TestBeforeAfterException {
 		System.out.println("before");
 		contador++;
 		service = new LocacaoService();
+		service.setDao(Mockito.mock(LocacaoDAO.class));
 	}
 	
 	@After
@@ -63,7 +66,6 @@ public class TestBeforeAfterException {
 	@Test
 	public void testLocacao() throws Exception {
 
-		service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
 		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 5.0));
 

@@ -23,7 +23,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
+import org.mockito.Mockito;
 
+import br.com.exercicio.calculadora.dao.LocacaoDAO;
 import br.com.exercicio.entidades.Filme;
 import br.com.exercicio.entidades.Locacao;
 import br.com.exercicio.entidades.Usuario;
@@ -46,6 +48,7 @@ public class LocacaoServiceTestExBuilder {
 	@Before
 	public void setup(){
 		service = new LocacaoService();
+		service.setDao(Mockito.mock(LocacaoDAO.class));
 	}
 	
 	@Test

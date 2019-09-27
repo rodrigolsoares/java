@@ -13,7 +13,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
+import org.mockito.Mockito;
 
+import br.com.exercicio.calculadora.dao.LocacaoDAO;
 import br.com.exercicio.entidades.Filme;
 import br.com.exercicio.entidades.Locacao;
 import br.com.exercicio.entidades.Usuario;
@@ -48,6 +50,7 @@ public class LocacaoServiceParametersTest {
 	@Before
 	public void initialize() {
 		service = new LocacaoService();
+		service.setDao(Mockito.mock(LocacaoDAO.class));
 	}
 	
 	@Parameters(name = "Teste {index} - {2}")

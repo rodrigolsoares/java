@@ -9,10 +9,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
+import org.mockito.Mockito;
 
+import br.com.exercicio.calculadora.dao.LocacaoDAO;
 import br.com.exercicio.entidades.Filme;
 import br.com.exercicio.entidades.Locacao;
 import br.com.exercicio.entidades.Usuario;
@@ -24,6 +27,14 @@ import br.com.exercicio.utils.DataUtils;
  * */
 public class AssertTestErrorCollector {
 	
+	LocacaoService service;
+
+	@Before
+	public void init() {
+		service = new LocacaoService();
+		service.setDao(Mockito.mock(LocacaoDAO.class));
+	}
+	
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
 	
@@ -31,7 +42,6 @@ public class AssertTestErrorCollector {
 	public void testLocacao() {
 		
 		//Cenário
-		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuário 1");
 		List<Filme> filmes = Arrays.asList(new Filme("Filme 1", 2, 5.0));
 		

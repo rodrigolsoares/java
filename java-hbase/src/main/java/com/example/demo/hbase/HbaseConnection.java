@@ -23,6 +23,10 @@ public class HbaseConnection {
 		String path = this.getClass().getClassLoader().getResource("hbase-site.xml").getPath();
 		config.addResource(new Path(path));
 		
+		/*config.set("hbase.master", "127.0.0.1:60000");
+		config.set("hbase.zookeeper.quorum", "127.0.0.1");
+		config.set("hbase.zookeeper.property.clientPort", "2181");*/
+		
 		HBaseAdmin.available(config);
 		
 		Connection connection = ConnectionFactory.createConnection(config);
